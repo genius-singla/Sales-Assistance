@@ -74,4 +74,3 @@ C:\Users\geniu\source\repos\App7\App7\obj\Debug\90\android\assets\System.Service
 C:\Users\geniu\source\repos\App7\App7\obj\Debug\90\android\assets\System.Xml.pdb
 C:\Users\geniu\source\repos\App7\App7\obj\Debug\90\android\assets\Xamarin.Essentials.dll.mdb
 C:\Users\geniu\source\repos\App7\App7\obj\Debug\90\App7.nuget.stamp
-C:\Users\geniu\source\repos\App7\App7\obj\Debug\90\linksrc\Xamarin.Essentials.dll.mdb

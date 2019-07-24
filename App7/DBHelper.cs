@@ -39,9 +39,8 @@ namespace App7
         public override void OnCreate(SQLiteDatabase db)
         {
             System.Console.WriteLine("My Create Table STM \n \n" + admin_creatTable);
-
             db.ExecSQL(admin_creatTable);
-            insertAdmin("admin","123");
+            //insertAdmin("admin","abc");
         }
 
         //Insert data into admin table
