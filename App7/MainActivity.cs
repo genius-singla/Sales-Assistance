@@ -24,8 +24,8 @@ namespace App7
         {
             base.OnCreate(savedInstanceState);
           
-            SetContentView(Resource.Layout.Registration);
-            /*login_username = FindViewById<EditText>(Resource.Id.login_edit_username);
+            SetContentView(Resource.Layout.activity_main);
+            login_username = FindViewById<EditText>(Resource.Id.login_edit_username);
             login_passowrd = FindViewById<EditText>(Resource.Id.login_edit_password);
             login_admin = FindViewById<RadioButton>(Resource.Id.login_radio_admin);
             login_sales_person = FindViewById<RadioButton>(Resource.Id.login_radio_sales_person);
@@ -34,7 +34,7 @@ namespace App7
             login_button.Click += delegate {
                 login();
             };
-            login_username.TextChanged += login_user_textChanged;*/
+            login_username.TextChanged += login_user_textChanged;
 
             
         }
