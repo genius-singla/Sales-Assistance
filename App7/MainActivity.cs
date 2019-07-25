@@ -41,7 +41,7 @@ namespace App7
 
         private void login_user_textChanged(object sender, TextChangedEventArgs e)
         {
-            if(login_username.Text.Contains("@") && login_username.Text.Contains("."))
+            if((login_username.Text.Contains("@") && login_username.Text.Contains(".")) || login_username.Text=="admin")
             {
                 Console.WriteLine("Valid Email");
             }
@@ -55,10 +55,11 @@ namespace App7
         {
             if(login_admin.Checked)
             {
-                /*cursor = myDB.SelectMyAdmindata();
+                cursor = myDB.SelectMyAdmindata();
+                cursor.MoveToFirst();
                 var un = cursor.GetString(cursor.GetColumnIndexOrThrow("adm_name"));
-                var pswd = cursor.GetString(cursor.GetColumnIndexOrThrow("adm_password"));*/
-                if(login_username.Text == "admin" && login_passowrd.Text == "abc")
+                var pswd = cursor.GetString(cursor.GetColumnIndexOrThrow("adm_password"));
+                if(login_username.Text == un && login_passowrd.Text == pswd)
                 {
                     System.Console.WriteLine("Successfully logged in!!");
                 }

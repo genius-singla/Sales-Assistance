@@ -38,6 +38,11 @@
     <Jar>C:\Users\geniu\source\repos\App7\App7\obj\Debug\90\lp\9\jl\com.android.support.support-annotations.jar</Jar>
   </Jars>
   <ResolvedResourceDirectories>
+    <ResolvedResourceDirectory>C:\Users\geniu\source\repos\App7\App7\obj\Debug\90\lp\2\jl\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>C:\Users\geniu\source\repos\App7\App7\obj\Debug\90\lp\4\jl\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>C:\Users\geniu\source\repos\App7\App7\obj\Debug\90\lp\5\jl\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>C:\Users\geniu\source\repos\App7\App7\obj\Debug\90\lp\6\jl\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>C:\Users\geniu\source\repos\App7\App7\obj\Debug\90\lp\7\jl\res</ResolvedResourceDirectory>
     <ResolvedResourceDirectory>C:\Users\geniu\source\repos\App7\App7\obj\Debug\90\lp\12\jl\res</ResolvedResourceDirectory>
     <ResolvedResourceDirectory>C:\Users\geniu\source\repos\App7\App7\obj\Debug\90\lp\13\jl\res</ResolvedResourceDirectory>
     <ResolvedResourceDirectory>C:\Users\geniu\source\repos\App7\App7\obj\Debug\90\lp\17\jl\res</ResolvedResourceDirectory>
@@ -48,9 +53,21 @@
     <ResolvedResourceDirectory>C:\Users\geniu\source\repos\App7\App7\obj\Debug\90\lp\32\jl\res</ResolvedResourceDirectory>
     <ResolvedResourceDirectory>C:\Users\geniu\source\repos\App7\App7\obj\Debug\90\lp\36\jl\res</ResolvedResourceDirectory>
   </ResolvedResourceDirectories>
-  <ResolvedAssetDirectories />
+  <ResolvedAssetDirectories>
+    <ResolvedAssetDirectory>obj\Debug\90\lp\2\jl\assets</ResolvedAssetDirectory>
+    <ResolvedAssetDirectory>obj\Debug\90\lp\4\jl\assets</ResolvedAssetDirectory>
+    <ResolvedAssetDirectory>obj\Debug\90\lp\5\jl\assets</ResolvedAssetDirectory>
+    <ResolvedAssetDirectory>obj\Debug\90\lp\6\jl\assets</ResolvedAssetDirectory>
+    <ResolvedAssetDirectory>obj\Debug\90\lp\7\jl\assets</ResolvedAssetDirectory>
+    <ResolvedAssetDirectory>obj\Debug\90\lp\36\jl\assets</ResolvedAssetDirectory>
+  </ResolvedAssetDirectories>
   <ResolvedEnvironmentFiles />
   <ResolvedResourceDirectoryStamps>
+    <ResolvedResourceDirectoryStamp>C:\Users\geniu\source\repos\App7\App7\obj\Debug\90\lp\2.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>C:\Users\geniu\source\repos\App7\App7\obj\Debug\90\lp\4.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>C:\Users\geniu\source\repos\App7\App7\obj\Debug\90\lp\5.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>C:\Users\geniu\source\repos\App7\App7\obj\Debug\90\lp\6.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>C:\Users\geniu\source\repos\App7\App7\obj\Debug\90\lp\7.stamp</ResolvedResourceDirectoryStamp>
     <ResolvedResourceDirectoryStamp>C:\Users\geniu\source\repos\App7\App7\obj\Debug\90\lp\12.stamp</ResolvedResourceDirectoryStamp>
     <ResolvedResourceDirectoryStamp>C:\Users\geniu\source\repos\App7\App7\obj\Debug\90\lp\13.stamp</ResolvedResourceDirectoryStamp>
     <ResolvedResourceDirectoryStamp>C:\Users\geniu\source\repos\App7\App7\obj\Debug\90\lp\17.stamp</ResolvedResourceDirectoryStamp>

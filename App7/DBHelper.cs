@@ -41,16 +41,19 @@ namespace App7
             System.Console.WriteLine("My Create Table STM \n \n" + admin_creatTable);
             db.ExecSQL(admin_creatTable);
             //insertAdmin("admin","abc");
+            string insertStm = "Insert into " + admin_tablename + " values('admin', 'abc');";
+            Console.WriteLine(insertStm);
+            db.ExecSQL(insertStm);
         }
 
         //Insert data into admin table
         public void insertAdmin(string uname, string upass)
         {
-            string insertStm = "Insert into " + admin_tablename + " values('" + uname + "', '" + upass + "');";
-            Console.WriteLine(insertStm);
-            connectionObj.ExecSQL(insertStm);
+            
+            //connectionObj.ExecSQL(insertStm);
         }
 
+        //Select data from admin table
         public ICursor SelectMyAdmindata()
         {
             String selectStm = "Select * from " + admin_tablename;
