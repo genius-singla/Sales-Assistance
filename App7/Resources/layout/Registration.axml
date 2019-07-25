@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+android:layout_height="fill_parent"
+android:orientation="vertical"
+android:gravity="center_horizontal">
+	<ImageView
+android:layout_height="50dp"
+android:layout_width="50dp"
+android:id="@+id/image1"
+android:layout_margin="20dp"
+android:src="@drawable/sales"
+ />
+	<TextView
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:id="@+id/Registersalesperson"
+android:text="Register Sales Person"
+android:fontFamily="Times New Roman"
+android:textStyle="bold"
+android:textSize="30dp"
+android:textColor="#FD9927"
+
+
+    />
+	<LinearLayout
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:orientation="horizontal"
+android:padding="10dp">
+<EditText
+android:id="@+id/fname"
+android:layout_width="150dp"
+android:layout_height="wrap_content"
+android:textColor="#A9A9A9"
+android:layout_marginTop="30dp"
+android:text="First Name"
+android:backgroundTint="#02BBD2"
+
+/>
+		<EditText
+android:id="@+id/lname"
+android:layout_width="150dp"
+android:layout_height="wrap_content"
+android:textColor="#A9A9A9"
+android:layout_marginTop="30dp"
+android:layout_marginBottom="30dp"
+android:text="Last Name"
+android:backgroundTint="#02BBD2"
+
+			
+/>
+		</LinearLayout>
+	<EditText
+android:id="@+id/email"
+android:layout_marginBottom="30dp"
+android:layout_width="300dp"
+android:layout_height="wrap_content"
+android:textColor="#A9A9A9"
+android:text="Email"
+android:backgroundTint="#02BBD2" 
+		android:drawableLeft="@drawable/gmail"
+/>
+	<EditText
+android:id="@+id/contact"
+android:layout_marginBottom="30dp"
+android:layout_width="300dp"
+android:layout_height="wrap_content"
+android:textColor="#A9A9A9"
+android:text="Contact Number"
+android:backgroundTint="#02BBD2" 
+android:drawableLeft="@drawable/contactnumber"
+/>
+	<EditText
+android:id="@+id/address"
+android:layout_marginBottom="30dp"
+android:layout_width="300dp"
+android:layout_height="wrap_content"
+android:textColor="#A9A9A9"
+android:text="Address"
+android:backgroundTint="#02BBD2" 
+android:drawableLeft="@drawable/location"
+/>
+	<EditText
+android:id="@+id/temporarypwd"
+android:layout_marginBottom="30dp"
+android:layout_width="300dp"
+android:layout_height="wrap_content"
+android:textColor="#A9A9A9"
+android:text="Temporary Password"
+android:backgroundTint="#02BBD2" 
+/>
+
+
+<Button
+        android:id="@+id/register"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:textSize="20dp"
+        android:background="#02BBD2"
+        android:textColor="#ffff"
+        android:textStyle="bold"
+        android:text="Register"
+android:layout_marginTop="20dp"
+/>
+
+</LinearLayout>

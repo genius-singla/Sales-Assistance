@@ -1533,21 +1533,26 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Avnash sanger\\.nuget\\packages\\": {}
+    "C:\\Users\\sodi\\.nuget\\packages\\": {},
+    "C:\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Avnash sanger\\Source\\Repos\\Sales-Assistance\\App7\\App7.csproj",
+      "projectUniqueName": "C:\\Users\\sodi\\Source\\Repos\\Sales-Assistance\\App7\\App7.csproj",
       "projectName": "App7",
-      "projectPath": "C:\\Users\\Avnash sanger\\Source\\Repos\\Sales-Assistance\\App7\\App7.csproj",
-      "packagesPath": "C:\\Users\\Avnash sanger\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Avnash sanger\\Source\\Repos\\Sales-Assistance\\App7\\obj\\",
+      "projectPath": "C:\\Users\\sodi\\Source\\Repos\\Sales-Assistance\\App7\\App7.csproj",
+      "packagesPath": "C:\\Users\\sodi\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\sodi\\Source\\Repos\\Sales-Assistance\\App7\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
+      "fallbackFolders": [
+        "C:\\Microsoft\\Xamarin\\NuGet\\"
+      ],
       "configFilePaths": [
-        "C:\\Users\\Avnash sanger\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\sodi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "monoandroid90"
