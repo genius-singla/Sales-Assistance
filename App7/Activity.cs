@@ -18,13 +18,19 @@ using Android.Widget;
 
 namespace App7
 {
-    [Activity(Label = "Activity")]
+    [Activity(Label = "Activity", Theme = "@style/AppTheme.NoActionBar")]
     public class Activity : AppCompatActivity, NavigationView.IOnNavigationItemSelectedListener
     {
+        LinearLayout reg_layout;
+        LinearLayout chg_pswd_layout;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
+
             SetContentView(Resource.Layout.activity);
+
+
+
 
 
             Android.Support.V7.Widget.Toolbar toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);
@@ -34,15 +40,34 @@ namespace App7
 
             DrawerLayout drawer = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
             ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, Resource.String.navigation_drawer_open, Resource.String.navigation_drawer_close);
+
             drawer.AddDrawerListener(toggle);
             toggle.SyncState();
 
+
             NavigationView navigationView = FindViewById<NavigationView>(Resource.Id.nav_view);
             navigationView.SetNavigationItemSelectedListener(this);
-            //this.Title = " welcome Admin";
+
+           //this.Title = " welcome Admin";
+            reg_layout = FindViewById<LinearLayout>(Resource.Id.reg_go);
+            chg_pswd_layout = FindViewById<LinearLayout>(Resource.Id.chg_pswd_go);
+
+            reg_layout.Click += delegate
+            {
+                //Console.WriteLine("Welcome to Registration Page");
+                Intent newscreen = new Intent(this, typeof(Registration));
+                StartActivity(newscreen);
+            };
+
+            chg_pswd_layout.Click += delegate
+            {
+                //Console.WriteLine("Welcome to Registration Page");
+                Intent newscreen = new Intent(this, typeof(Changepassword));
+                StartActivity(newscreen);
+            };
 
         }
-
+        
 
 
         public override void OnBackPressed()
@@ -64,17 +89,6 @@ namespace App7
             return true;
         }
 
-        // public override bool OnOptionsItemSelected(IMenuItem item)
-        //{
-        //  int id = item.ItemId;
-        // if (id == Resource.Id.action_settings)
-        // {
-        //    return true;
-        // }
-
-        //  return base.OnOptionsItemSelected(item);
-        //  }
-
 
         public bool OnNavigationItemSelected(IMenuItem item)
         {
@@ -82,7 +96,7 @@ namespace App7
 
             if (id == Resource.Id.nav_sales)
             {
-                // Handle the camera action
+                
             }
             else if (id == Resource.Id.nav_product)
             {

@@ -6,10 +6,11 @@ using Android.Widget;
 using System;
 using Android.Database;
 using Android.Text;
+using Android.Content;
 
 namespace App7
 {
-    [Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = true)]
+    [Activity(Label = "@string/app_name", Theme = "@style/AppTheme.NoActionBar", MainLauncher = true)]
     public class MainActivity : Activity
     {
         ICursor cursor;
@@ -62,6 +63,8 @@ namespace App7
                 if(login_username.Text == un && login_passowrd.Text == pswd)
                 {
                     System.Console.WriteLine("Successfully logged in!!");
+                    Intent newscreen = new Intent(this, typeof(Activity));
+                    StartActivity(newscreen);
                 }
                 else
                 {

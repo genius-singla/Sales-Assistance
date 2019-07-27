@@ -53,6 +53,21 @@ namespace App7
             //connectionObj.ExecSQL(insertStm);
         }
 
+        public ICursor chk_admin_passwod()
+        {
+            String selectStm = "Select * from " + admin_tablename;
+
+            ICursor myresut = connectionObj.RawQuery(selectStm, null);
+            return myresut;
+        }
+
+        public void update_admin_password(string pswd)
+        {
+            String updateStm = "update " + admin_tablename + " set " + admin_password + " = '" + pswd + "';";
+            connectionObj.ExecSQL(updateStm);
+            Console.WriteLine(updateStm);
+        }
+
         //Select data from admin table
         public ICursor SelectMyAdmindata()
         {

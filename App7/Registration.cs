@@ -12,7 +12,7 @@ using Android.Widget;
 
 namespace App7
 {
-    [Activity(Label = "Registration")]
+    [Activity(Label = "Registration", Theme = "@style/AppTheme.NoActionBar")]
     public class Registration : Activity
     {
         EditText first_name;
