@@ -36,7 +36,7 @@
 		android:text="Sales"
 	    android:fontFamily="Times New Roman"
 		android:layout_marginLeft="40dp"
-				
+		
 		android:textSize="25dp"
 		android:textColor="#060101"
 	/>
@@ -134,7 +134,7 @@
 	    android:fontFamily="Times New Roman"
 		android:layout_marginLeft="40dp"
 				
-		android:textSize="25dp"
+		android:textSize="15dp"
 		android:textColor="#060101"
 	/>
 	</LinearLayout>
