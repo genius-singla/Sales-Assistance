@@ -73,14 +73,16 @@ namespace App7
         public override void OnBackPressed()
         {
             DrawerLayout drawer = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
-            if (drawer.IsDrawerOpen(GravityCompat.Start))
+            /*if (drawer.IsDrawerOpen(GravityCompat.Start))
             {
                 drawer.CloseDrawer(GravityCompat.Start);
             }
             else
             {
                 base.OnBackPressed();
-            }
+            }*/
+            Intent newscreen = new Intent(this, typeof(Activity));
+            StartActivity(newscreen);
         }
 
         public override bool OnCreateOptionsMenu(IMenu menu)
