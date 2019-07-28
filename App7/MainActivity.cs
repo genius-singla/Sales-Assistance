@@ -73,7 +73,20 @@ namespace App7
             }
             else
             {
-
+                cursor = myDB.SelectSalesPersonData(login_username.Text);
+                cursor.MoveToFirst();
+                var un = cursor.GetString(cursor.GetColumnIndexOrThrow("sp_email"));
+                var pswd = cursor.GetString(cursor.GetColumnIndexOrThrow("sp_password"));
+                if (login_username.Text == un && login_passowrd.Text == pswd)
+                {
+                    System.Console.WriteLine("Successfully logged in!!");
+                    /*Intent newscreen = new Intent(this, typeof(Activity));
+                    StartActivity(newscreen);*/
+                }
+                else
+                {
+                    System.Console.WriteLine("Wrong username and password");
+                }
             }
         }
     }

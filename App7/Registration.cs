@@ -22,6 +22,8 @@ namespace App7
         EditText addrs;
         EditText temppwd;
         Button registration;
+
+        DBHelper myDB;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -35,6 +37,14 @@ namespace App7
             addrs = FindViewById<EditText>(Resource.Id.address);
             temppwd = FindViewById<EditText>(Resource.Id.temporarypwd);
             registration = FindViewById<Button>(Resource.Id.register);
+
+            myDB = new DBHelper(this);
+
+            registration.Click += delegate
+              {
+                  myDB.insertSalesPerson(first_name.Text, last_name.Text, e_mail.Text, c_num.Text, addrs.Text, temppwd.Text);
+              };
+            
 
         }
     }

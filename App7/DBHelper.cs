@@ -29,6 +29,51 @@ namespace App7
         public string admin_creatTable = "Create Table " + admin_tablename + "(" + admin_name + " Text, " + admin_password + " Text);";
 
 
+        /*      ***Sales Person Table***      */
+        public static string sales_person_tablename = "sales_person";
+        public static string sales_person_id = "sales_person_id";
+        public static string sales_person_fname = "first_name";
+        public static string sales_person_lname = "last_name";
+        public static string sales_person_email = "sp_email";
+        public static string sales_person_contact = "sp_contact";
+        public static string sales_person_address = "sp_address";
+        public static string sales_person_password = "sp_password";
+
+        /*      Create table for sales person       */
+        public string sales_person_creatTable = "Create Table " + sales_person_tablename + "(" 
+            + sales_person_id + " int, "
+            + sales_person_fname + " Text, "
+            + sales_person_lname + " Text, "
+            + sales_person_email + " Text, "
+            + sales_person_contact + " Text, "
+            + sales_person_address + " Text, "
+            + sales_person_password + " Text);";
+
+        public void insertSalesPerson(string fname, string lname, string sp_email, string sp_contact, string sp_address, string sp_password)
+        {
+            String selectStm = "Select ifnull(max(" + sales_person_id + "),0) as max_id from " + sales_person_tablename;
+
+            ICursor myresult = connectionObj.RawQuery(selectStm, null);
+            myresult.MoveToFirst();
+            var id = myresult.GetInt(myresult.GetColumnIndexOrThrow("max_id"));
+
+            string insertStatement = "Insert into " + sales_person_tablename + " values(" + (id+1) + ", '" + fname + "', '"
+                + lname + "', '"
+                + sp_email + "', '"
+                + sp_contact + "', '"
+                + sp_address + "', '"
+                + sp_password + "');";
+            connectionObj.ExecSQL(insertStatement);
+            Console.WriteLine(insertStatement);
+        }
+
+        public ICursor SelectSalesPersonData(string uname)
+        {
+            String selectStm = "Select * from " + sales_person_tablename + " where " + sales_person_email + "= '" + uname + "';";
+
+            ICursor myresut = connectionObj.RawQuery(selectStm, null);
+            return myresut;
+        }
 
         public DBHelper(Context context) : base(context, name: DBName, factory: null, version: 1)
         {
@@ -40,6 +85,7 @@ namespace App7
         {
             System.Console.WriteLine("My Create Table STM \n \n" + admin_creatTable);
             db.ExecSQL(admin_creatTable);
+            db.ExecSQL(sales_person_creatTable);
             //insertAdmin("admin","abc");
             string insertStm = "Insert into " + admin_tablename + " values('admin', 'abc');";
             Console.WriteLine(insertStm);
