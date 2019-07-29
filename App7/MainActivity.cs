@@ -80,8 +80,8 @@ namespace App7
                 if (login_username.Text == un && login_passowrd.Text == pswd)
                 {
                     System.Console.WriteLine("Successfully logged in!!");
-                    /*Intent newscreen = new Intent(this, typeof(Activity));
-                    StartActivity(newscreen);*/
+                    Intent newscreen = new Intent(this, typeof(sales_person_dashboard));
+                    StartActivity(newscreen);
                 }
                 else
                 {

@@ -34,8 +34,8 @@ namespace App7
 
 
             Android.Support.V7.Widget.Toolbar toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);
-            SetSupportActionBar(toolbar);
-            SupportActionBar.Title = "Welcome Admin ";
+            /*SetSupportActionBar(toolbar);
+            SupportActionBar.Title = "Welcome Admin ";*/
 
 
             DrawerLayout drawer = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
@@ -70,7 +70,7 @@ namespace App7
         
 
 
-        public override void OnBackPressed()
+        /*public override void OnBackPressed()
         {
             DrawerLayout drawer = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
             /*if (drawer.IsDrawerOpen(GravityCompat.Start))
@@ -80,10 +80,10 @@ namespace App7
             else
             {
                 base.OnBackPressed();
-            }*/
+            }//
             Intent newscreen = new Intent(this, typeof(Activity));
             StartActivity(newscreen);
-        }
+        }*/
 
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
