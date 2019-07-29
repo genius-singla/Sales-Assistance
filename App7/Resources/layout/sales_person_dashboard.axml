@@ -6,8 +6,8 @@
 	android:background="#fff">
 	<LinearLayout
 		android:orientation="horizontal"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
 		android:weightSum="0.9">
 		<LinearLayout
 			android:layout_width="wrap_content"
@@ -64,6 +64,32 @@
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:text="View Customer"
+				android:lines="2"/>
+		</LinearLayout>
+	</LinearLayout>
+
+	<LinearLayout
+		android:orientation="horizontal"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:weightSum="0.9">
+		<LinearLayout
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:orientation="vertical"
+			android:layout_weight=".3"
+			android:layout_gravity="left"
+			android:paddingLeft="20dp"
+			android:paddingRight="10dp">
+				<ImageView
+				android:layout_width="100dp"
+				android:layout_height="100dp"
+				android:src="@drawable/change_pswd"
+				android:id="@+id/chg_pswd_img1"/>
+				<TextView
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:text="Change Password"
 				android:lines="2"/>
 		</LinearLayout>
 	</LinearLayout>
