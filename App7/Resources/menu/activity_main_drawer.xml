@@ -15,7 +15,7 @@
             android:title="Product" />
         <item
             android:id="@+id/nav_purchase"
-            android:icon="@drawable/c"
+            android:icon="@drawable/p"
             android:title="Purchase" />
         <item
             android:id="@+id/nav_customer"
@@ -27,7 +27,7 @@
            android:title="Category" />
       <item
           android:id="@+id/nav_salesperson"
-          android:icon="@drawable/c"
+          android:icon="@drawable/registration"
           android:title="SalesPerson" />
       <item
           android:id="@+id/nav_password"

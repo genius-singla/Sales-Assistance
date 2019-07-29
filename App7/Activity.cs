@@ -34,8 +34,8 @@ namespace App7
 
 
             Android.Support.V7.Widget.Toolbar toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);
-            /*SetSupportActionBar(toolbar);
-            SupportActionBar.Title = "Welcome Admin ";*/
+            SetSupportActionBar(toolbar);
+            SupportActionBar.Title = "Welcome Admin ";
 
 
             DrawerLayout drawer = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
