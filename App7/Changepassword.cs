@@ -17,6 +17,7 @@ namespace App7
     [Activity(Label = "Changepassword",Theme = "@style/AppTheme.NoActionBar")]
     public class Changepassword : Activity
     {
+        string userName;
         EditText old_pwd;
         EditText new_pwd;
         EditText confirm_pwd;
@@ -28,6 +29,7 @@ namespace App7
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.Changepassword);
+            userName = Intent.GetStringExtra("userName");
             old_pwd = FindViewById<EditText>(Resource.Id.oldassword);
             new_pwd = FindViewById<EditText>(Resource.Id.newpwd);
             confirm_pwd = FindViewById<EditText>(Resource.Id.confirmpwd);
@@ -54,17 +56,35 @@ namespace App7
 
         private void chk_paswd(object sender, EventArgs e)
         {
-            cursor = myDB.chk_admin_passwod();
-            cursor.MoveToFirst();
-            string pswd = cursor.GetString(cursor.GetColumnIndexOrThrow("adm_password"));
-            if (pswd == old_pwd.Text)
+            if(userName=="admin")
             {
-                myDB.update_admin_password(new_pwd.Text);
+                cursor = myDB.chk_admin_passwod();
+                cursor.MoveToFirst();
+                string pswd = cursor.GetString(cursor.GetColumnIndexOrThrow("adm_password"));
+                if (pswd == old_pwd.Text)
+                {
+                    myDB.update_admin_password(new_pwd.Text);
+                }
+                else
+                {
+                    Console.WriteLine("Wrong Password!");
+                }
             }
             else
             {
-                Console.WriteLine("Wrong Password!");
+                cursor = myDB.chk_sales_person_Password(userName);
+                cursor.MoveToFirst();
+                string pswd = cursor.GetString(cursor.GetColumnIndexOrThrow("sp_password"));
+                if (pswd == old_pwd.Text)
+                {
+                    myDB.update_sales_person_password(userName ,new_pwd.Text);
+                }
+                else
+                {
+                    Console.WriteLine("Wrong Password!");
+                }
             }
+            
         }
     }
 }

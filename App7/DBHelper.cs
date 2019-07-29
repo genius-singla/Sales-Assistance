@@ -49,6 +49,7 @@ namespace App7
             + sales_person_address + " Text, "
             + sales_person_password + " Text);";
 
+        //Inserting entry of new sales person
         public void insertSalesPerson(string fname, string lname, string sp_email, string sp_contact, string sp_address, string sp_password)
         {
             String selectStm = "Select ifnull(max(" + sales_person_id + "),0) as max_id from " + sales_person_tablename;
@@ -66,7 +67,27 @@ namespace App7
             connectionObj.ExecSQL(insertStatement);
             Console.WriteLine(insertStatement);
         }
+        
 
+        //Updating Sales Person Password
+        public void update_sales_person_password(string uname,string pswd)
+        {
+            String updateStm = "update " + sales_person_tablename + " set " + sales_person_password + " = '" 
+                + pswd + "' where " + sales_person_email + " = '" + uname + "';";
+            connectionObj.ExecSQL(updateStm);
+            Console.WriteLine(updateStm);
+        }
+
+        //checking the password of sales person
+        public ICursor chk_sales_person_Password(string uname)
+        {
+            String selectStm = "Select * from " + sales_person_tablename + " where " + sales_person_email + "= '" + uname + "';";
+
+            ICursor myresut = connectionObj.RawQuery(selectStm, null);
+            return myresut;
+        }
+
+        //Fetching particular sales person data
         public ICursor SelectSalesPersonData(string uname)
         {
             String selectStm = "Select * from " + sales_person_tablename + " where " + sales_person_email + "= '" + uname + "';";

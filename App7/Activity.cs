@@ -63,6 +63,7 @@ namespace App7
             {
                 //Console.WriteLine("Welcome to Registration Page");
                 Intent newscreen = new Intent(this, typeof(Changepassword));
+                newscreen.PutExtra("userName", "admin");
                 StartActivity(newscreen);
             };
 

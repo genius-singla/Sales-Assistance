@@ -81,6 +81,7 @@ namespace App7
                 {
                     System.Console.WriteLine("Successfully logged in!!");
                     Intent newscreen = new Intent(this, typeof(sales_person_dashboard));
+                    newscreen.PutExtra("email", login_username.Text);
                     StartActivity(newscreen);
                 }
                 else

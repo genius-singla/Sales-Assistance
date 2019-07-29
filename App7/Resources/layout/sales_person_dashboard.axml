@@ -80,7 +80,9 @@
 			android:layout_weight=".3"
 			android:layout_gravity="left"
 			android:paddingLeft="20dp"
-			android:paddingRight="10dp">
+			android:paddingRight="10dp"
+			android:id="@+id/sales_layout_chg_pswd"
+			android:clickable="true">
 				<ImageView
 				android:layout_width="100dp"
 				android:layout_height="100dp"
