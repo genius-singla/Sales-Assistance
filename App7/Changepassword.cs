@@ -8,6 +8,7 @@ using Android.Content;
 using Android.Database;
 using Android.OS;
 using Android.Runtime;
+using Android.Support.Design.Widget;
 using Android.Text;
 using Android.Views;
 using Android.Widget;
@@ -64,10 +65,20 @@ namespace App7
                 if (pswd == old_pwd.Text)
                 {
                     myDB.update_admin_password(new_pwd.Text);
+                    Snackbar snackBar = Snackbar.Make(change_pwd, "Password Updated!", Snackbar.LengthIndefinite);
+                    //Show the snackbar
+                    snackBar.SetDuration(5000);
+                    snackBar.Show();
+                    Intent newscreen = new Intent(this, typeof(Activity));
+                    StartActivity(newscreen);
+
                 }
                 else
                 {
-                    Console.WriteLine("Wrong Password!");
+                    Snackbar snackBar = Snackbar.Make(change_pwd, "Wrong Password!", Snackbar.LengthIndefinite);
+                    //Show the snackbar
+                    snackBar.SetDuration(5000);
+                    snackBar.Show();
                 }
             }
             else
@@ -78,10 +89,18 @@ namespace App7
                 if (pswd == old_pwd.Text)
                 {
                     myDB.update_sales_person_password(userName ,new_pwd.Text);
+
+                    Snackbar snackBar = Snackbar.Make(change_pwd, "Password Updated!", Snackbar.LengthIndefinite);
+                    //Show the snackbar
+                    snackBar.SetDuration(5000);
+                    snackBar.Show();
                 }
                 else
                 {
-                    Console.WriteLine("Wrong Password!");
+                    Snackbar snackBar = Snackbar.Make(change_pwd, "Wrong Password!", Snackbar.LengthIndefinite);
+                    //Show the snackbar
+                    snackBar.SetDuration(5000);
+                    snackBar.Show();
                 }
             }
             
