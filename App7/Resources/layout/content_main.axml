@@ -216,6 +216,14 @@
 	/>
 	</LinearLayout>
 		</LinearLayout>
+	
+		<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="horizontal"
+	    
+			android:weightSum="0.9"
+		android:layout_marginTop="20dp">
 		<LinearLayout
 			android:layout_width="wrap_content"
 	android:layout_height="wrap_content"
@@ -227,7 +235,7 @@
 			android:paddingLeft="20dp"
 			android:paddingRight="10dp"
 			android:clickable="true"
-		android:layout_marginTop="20dp"
+	
 		android:id="@+id/chg_pswd_go">
 		<ImageView
 		android:layout_height="100dp"
@@ -247,5 +255,36 @@
 	
 	/>
 			</LinearLayout>
-
-</LinearLayout>
+			<LinearLayout
+			android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	
+    android:background="#ffffff"
+		android:orientation="vertical"
+			android:layout_weight=".3"
+			android:layout_gravity="left"
+			android:paddingLeft="10dp"
+			android:paddingRight="10dp"
+			android:clickable="true"
+	
+		android:id="@+id/vendor_go">
+		<ImageView
+		android:layout_height="110dp"
+		android:layout_width="110dp"
+		android:id="@+id/vendor_id"
+				
+		
+		android:src="@drawable/vendor" />
+			
+		<TextView		
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:id="@+id/txt_vendor"
+		android:text="Vendor"
+				android:lines="2"
+			  android:gravity="center"
+	
+	/>
+			</LinearLayout>
+			</LinearLayout>
+	</LinearLayout>
