@@ -77,11 +77,14 @@ namespace App7
                 cursor.MoveToFirst();
                 var un = cursor.GetString(cursor.GetColumnIndexOrThrow("sp_email"));
                 var pswd = cursor.GetString(cursor.GetColumnIndexOrThrow("sp_password"));
+                var fname = cursor.GetString(cursor.GetColumnIndexOrThrow("first_name"));
+                var lname = cursor.GetString(cursor.GetColumnIndexOrThrow("last_name"));
                 if (login_username.Text == un && login_passowrd.Text == pswd)
                 {
                     System.Console.WriteLine("Successfully logged in!!");
                     Intent newscreen = new Intent(this, typeof(sales_person_dashboard));
                     newscreen.PutExtra("email", login_username.Text);
+                    newscreen.PutExtra("salesPersonName", fname + " " + lname);
                     StartActivity(newscreen);
                 }
                 else

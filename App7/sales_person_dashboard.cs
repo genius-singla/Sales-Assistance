@@ -23,17 +23,23 @@ namespace App7
     public class sales_person_dashboard : AppCompatActivity, NavigationView.IOnNavigationItemSelectedListener
     {
         string user_email;
+        string user_name;
         LinearLayout sales_chg_pswd;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.sales_person_activity);
-            Android.Support.V7.Widget.Toolbar toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);
-            //SetSupportActionBar(toolbar);
-            // SupportActionBar.Title = "Welcome Sales Person ";
+            
 
             user_email = Intent.GetStringExtra("email");
+            user_name = Intent.GetStringExtra("salesPersonName");
             sales_chg_pswd = FindViewById<LinearLayout>(Resource.Id.sales_layout_chg_pswd);
+
+            //Title Bar
+            Android.Support.V7.Widget.Toolbar toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);
+            SetSupportActionBar(toolbar);
+            SupportActionBar.Title = "Welcome! " + user_name;
+
             sales_chg_pswd.Click += delegate
             {
                 Intent newscreen = new Intent(this, typeof(Changepassword));
