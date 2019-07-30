@@ -60,6 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Activity.cs" />
+    <Compile Include="Category.cs" />
     <Compile Include="Changepassword.cs" />
     <Compile Include="DBHelper.cs" />
     <Compile Include="MainActivity.cs" />
@@ -196,6 +197,11 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\registration_app_bar.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\add_category.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

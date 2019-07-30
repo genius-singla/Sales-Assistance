@@ -23,6 +23,7 @@ namespace App7
     {
         LinearLayout reg_layout;
         LinearLayout chg_pswd_layout;
+        LinearLayout add_category_link_layout;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -51,7 +52,7 @@ namespace App7
            //this.Title = " welcome Admin";
             reg_layout = FindViewById<LinearLayout>(Resource.Id.reg_go);
             chg_pswd_layout = FindViewById<LinearLayout>(Resource.Id.chg_pswd_go);
-
+            add_category_link_layout = FindViewById<LinearLayout>(Resource.Id.add_category_link);
             reg_layout.Click += delegate
             {
                 //Console.WriteLine("Welcome to Registration Page");
@@ -64,6 +65,11 @@ namespace App7
                 //Console.WriteLine("Welcome to Registration Page");
                 Intent newscreen = new Intent(this, typeof(Changepassword));
                 newscreen.PutExtra("userName", "admin");
+                StartActivity(newscreen);
+            };
+            add_category_link_layout.Click += delegate
+            {
+                Intent newscreen = new Intent(this, typeof(Category));
                 StartActivity(newscreen);
             };
 

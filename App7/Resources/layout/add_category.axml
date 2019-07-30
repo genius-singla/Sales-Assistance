@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+	android:background="#ffffff"
+    android:gravity="center_horizontal">
+
+<ImageView
+android:layout_height="50dp"
+android:layout_width="50dp"
+android:id="@+id/category_page_logo"
+android:layout_margin="20dp"
+android:src="@drawable/sales" />
+	<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/category_text_id"
+    android:text="SALES ASSIST"
+    android:fontFamily="Times New Roman"
+    android:textStyle="bold"
+    android:textSize="30dp"
+    android:textColor="#FD9927"
+    android:layout_margin="30dp"/>
+
+<EditText
+    android:id="@+id/enter_category_id"
+    android:layout_width="300dp"
+    android:layout_height="wrap_content"
+    android:textColor="#A9A9A9"
+    android:layout_margin="30dp"
+    android:hint="Enter Category"
+    android:backgroundTint="#02BBD2"/>
+	<ImageView
+	android:src="@android:drawable/ic_menu_gallery"	
+		android:layout_width="match_parent"
+		android:layout_height="374.0dp"
+		android:id="@+id/category_img_view"
+		android:clickable="true"
+		/>
+	<Button
+    android:layout_marginTop="40dp"
+    android:id="@+id/category_btn"
+    android:layout_width="300dp"
+    android:layout_height="50dp"
+    android:background="#FD9927"
+    android:textColor="#ffffff"
+    android:textStyle="bold"
+    android:text="Add Category"/>
+</LinearLayout>
