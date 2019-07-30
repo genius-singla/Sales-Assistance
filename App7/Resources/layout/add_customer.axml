@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+	android:gravity="center_horizontal"
+	android:background="#fff" >
+	<ImageView
+android:layout_height="50dp"
+android:layout_width="50dp"
+android:id="@+id/cust_image"
+android:layout_margin="20dp"
+android:src="@drawable/sales"
+ />
+	<TextView
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:id="@+id/Add_customer"
+android:text="Add Customer"
+android:fontFamily="Times New Roman"
+android:textStyle="bold"
+android:textSize="30dp"
+android:textColor="#FD9927"
+
+
+    />
+	
+	<EditText
+    android:id="@+id/cust_company_name_id"
+    android:layout_margin="30dp"
+    android:layout_width="300dp"
+    android:layout_height="wrap_content"
+    android:textColor="#A9A9A9"
+    android:hint="Company Name"
+	android:inputType="textPassword"
+    android:backgroundTint="#02BBD2"/>
+	<EditText
+android:id="@+id/customer_address"
+android:layout_marginBottom="20dp"
+android:layout_width="300dp"
+android:layout_height="wrap_content"
+android:textColor="#A9A9A9"
+android:hint="Address"
+android:backgroundTint="#02BBD2" 
+android:drawableLeft="@drawable/location"
+/>
+	<LinearLayout
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:orientation="horizontal"
+android:padding="10dp">
+<EditText
+android:id="@+id/cust_city_text"
+android:layout_width="150dp"
+android:layout_height="wrap_content"
+android:textColor="#A9A9A9"
+
+android:hint="City"
+android:backgroundTint="#02BBD2"
+
+/>
+		<EditText
+android:id="@+id/cust_street_id"
+android:layout_width="150dp"
+android:layout_height="wrap_content"
+android:textColor="#A9A9A9"
+
+android:layout_marginBottom="20dp"
+android:hint="State/Province"
+android:backgroundTint="#02BBD2"
+
+			
+/>
+		</LinearLayout>
+		<EditText
+android:id="@+id/cust_contact_name_id"
+android:layout_marginBottom="20dp"
+android:layout_width="300dp"
+android:layout_height="wrap_content"
+android:textColor="#A9A9A9"
+android:hint="Contact Name"
+android:backgroundTint="#02BBD2" 
+		android:drawableLeft="@drawable/person"
+/>
+		<EditText
+android:id="@+id/cust_contact_id"
+android:layout_marginBottom="20dp"
+android:layout_width="300dp"
+android:layout_height="wrap_content"
+android:textColor="#A9A9A9"
+android:hint="Contact Number"
+android:backgroundTint="#02BBD2" 
+android:drawableLeft="@drawable/contactnumber"
+/>
+		<EditText
+android:id="@+id/cust_email"
+android:layout_marginBottom="20dp"
+android:layout_width="300dp"
+android:layout_height="wrap_content"
+android:textColor="#A9A9A9"
+android:hint="Email"
+android:backgroundTint="#02BBD2" 
+		android:drawableLeft="@drawable/gmail"
+/>
+		
+	<Button
+        android:id="@+id/cust_btn"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:textSize="20dp"
+        android:background="#FD9927"
+        android:textColor="#ffff"
+        android:textStyle="bold"
+        android:text="Add Customer"
+android:layout_marginTop="20dp"
+/>
+
+</LinearLayout>
