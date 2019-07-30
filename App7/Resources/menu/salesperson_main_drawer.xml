@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+      <item
+          android:id="@+id/vieworder"
+          android:icon="@drawable/mysales"
+          android:title="View Order" />
+      <item
+          android:id="@+id/viewproduct"
+          android:icon="@drawable/purr"
+          android:title="View Product" />
+      <item
+          android:id="@+id/addorder"
+          android:icon="@drawable/addorder"
+          android:title="Add order" />
+      <item
+          android:id="@+id/changepassword"
+          android:icon="@drawable/cp"
+          android:title="Change Password" />
+    </group>
+    
+
+
+</menu>
