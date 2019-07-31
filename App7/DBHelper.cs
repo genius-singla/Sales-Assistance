@@ -49,6 +49,38 @@ namespace App7
             + sales_person_address + " Text, "
             + sales_person_password + " Text);";
 
+
+        /*      Category Table      */
+        public static string category = "category";
+        public static string category_id = "cat_id";
+        public static string category_name = "cat_name";
+        public static string category_image = "cat_img";
+        //      Create Category Table
+        public string category_creatTable = "Create Table " + category + "("
+            + category_id + " int, "
+            + category_name + " Text, "
+            + category_image + " Text);";
+
+
+
+        // Inserting new Category
+        public void insertCategory(string cat, string img_path)
+        {
+            String selectStm = "Select ifnull(max(" + category_id + "),0) as max_id from " + category;
+            ICursor myresult = connectionObj.RawQuery(selectStm, null);
+            myresult.MoveToFirst();
+            var id = myresult.GetInt(myresult.GetColumnIndexOrThrow("max_id"));
+
+            string insertStatement = "Insert into " + category + " values(" + (id + 1) + ", '" + cat + "', '"
+                + img_path + "');";
+            connectionObj.ExecSQL(insertStatement);
+            Console.WriteLine(insertStatement);
+
+        }
+
+        
+
+
         //Inserting entry of new sales person
         public void insertSalesPerson(string fname, string lname, string sp_email, string sp_contact, string sp_address, string sp_password)
         {
@@ -107,6 +139,7 @@ namespace App7
             System.Console.WriteLine("My Create Table STM \n \n" + admin_creatTable);
             db.ExecSQL(admin_creatTable);
             db.ExecSQL(sales_person_creatTable);
+            db.ExecSQL(category_creatTable);
             //insertAdmin("admin","abc");
             string insertStm = "Insert into " + admin_tablename + " values('admin', 'abc');";
             Console.WriteLine(insertStm);
