@@ -28,6 +28,13 @@ namespace App7
         //create database
         public string admin_creatTable = "Create Table " + admin_tablename + "(" + admin_name + " Text, " + admin_password + " Text);";
 
+        public ICursor category_list()
+        {
+            String selectStm = "Select * from " + category +";";
+            ICursor myresut = connectionObj.RawQuery(selectStm, null);
+            return myresut;
+        }
+
 
         /*      ***Sales Person Table***      */
         public static string sales_person_tablename = "sales_person";
@@ -59,7 +66,7 @@ namespace App7
         public string category_creatTable = "Create Table " + category + "("
             + category_id + " int, "
             + category_name + " Text, "
-            + category_image + " Text);";
+            + category_image + " image);";
 
 
 
