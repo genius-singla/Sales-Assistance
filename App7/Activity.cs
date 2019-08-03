@@ -26,6 +26,7 @@ namespace App7
         LinearLayout add_category_link_layout;
         LinearLayout vendor_layout;
         LinearLayout customer_layout;
+        LinearLayout product_layout;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -57,6 +58,7 @@ namespace App7
             add_category_link_layout = FindViewById<LinearLayout>(Resource.Id.add_category_link);
             vendor_layout = FindViewById<LinearLayout>(Resource.Id.vendor_go);
             customer_layout = FindViewById<LinearLayout>(Resource.Id.add_customer_link);
+            product_layout = FindViewById<LinearLayout>(Resource.Id.pro_id_go);
             reg_layout.Click += delegate
             {
                 //Console.WriteLine("Welcome to Registration Page");
@@ -86,7 +88,11 @@ namespace App7
                 Intent newscreen = new Intent(this, typeof(Customer));
                 StartActivity(newscreen);
             };
-
+            product_layout.Click+= delegate
+            {
+                Intent newscreen = new Intent(this, typeof(Product));
+                StartActivity(newscreen);
+            };
         }
         
 
