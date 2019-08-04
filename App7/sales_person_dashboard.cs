@@ -25,6 +25,7 @@ namespace App7
         string user_email;
         string user_name;
         LinearLayout sales_chg_pswd;
+       
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -34,6 +35,7 @@ namespace App7
             user_email = Intent.GetStringExtra("email");
             user_name = Intent.GetStringExtra("salesPersonName");
             sales_chg_pswd = FindViewById<LinearLayout>(Resource.Id.sales_layout_chg_pswd);
+            
 
             //Title Bar
             Android.Support.V7.Widget.Toolbar toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);
