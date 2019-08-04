@@ -28,13 +28,7 @@ namespace App7
         //create database
         public string admin_creatTable = "Create Table " + admin_tablename + "(" + admin_name + " Text, " + admin_password + " Text);";
 
-        public ICursor category_list()
-        {
-            String selectStm = "Select * from " + category +";";
-            ICursor myresut = connectionObj.RawQuery(selectStm, null);
-            return myresut;
-        }
-
+        
 
         /*      ***Sales Person Table***      */
         public static string sales_person_tablename = "sales_person";
@@ -57,11 +51,36 @@ namespace App7
             + sales_person_password + " Text);";
 
 
+        /*      ***Product Table***      */
+        public static string product_tablename = "product";
+        public static string product_id = "pro_id";
+        public static string cat_id = "cat_id";
+        public static string product_name = "pro_name";
+        public static string unit = "unit";
+        public static string purchase_price = "purchase_price";
+        public static string selling_price = "selling_price";
+        public static string product_image = "pro_image";
+
+        //      Create Product Table
+        public string product_creatTable = "Create Table " + product_tablename + "("
+            + product_id + " int, "
+            + cat_id + " int, "
+            + product_name + " Text, "
+            + unit + " Text, "
+            + purchase_price + " int, "
+            + selling_price + " int, "
+            + product_image + " image);";
+
+
+
         /*      Category Table      */
         public static string category = "category";
         public static string category_id = "cat_id";
         public static string category_name = "cat_name";
         public static string category_image = "cat_img";
+
+        
+
         //      Create Category Table
         public string category_creatTable = "Create Table " + category + "("
             + category_id + " int, "
@@ -85,8 +104,31 @@ namespace App7
 
         }
 
-        
+        public void InsertProduct(int cat_id, string product_name, string unit_val, int product_purchase_price, int product_sell_price, string product_image)
+        {
+            String selectStm = "Select ifnull(max(" + product_id + "),0) as max_id from " + product_tablename;
+            ICursor myresult = connectionObj.RawQuery(selectStm, null);
+            myresult.MoveToFirst();
+            var id = myresult.GetInt(myresult.GetColumnIndexOrThrow("max_id"));
 
+            string insertStatement = "Insert into " + product_tablename + " values(" + (id + 1) + ", " + cat_id + ", '" 
+                + product_name + "', '"
+                + unit_val+"', "
+                + product_purchase_price + ", "
+                + product_sell_price + ", '"
+                + product_image + "');";
+            connectionObj.ExecSQL(insertStatement);
+            Console.WriteLine(insertStatement);
+        }
+
+
+        //Getting Category list
+        public ICursor category_list()
+        {
+            String selectStm = "Select * from " + category + ";";
+            ICursor myresut = connectionObj.RawQuery(selectStm, null);
+            return myresut;
+        }
 
         //Inserting entry of new sales person
         public void insertSalesPerson(string fname, string lname, string sp_email, string sp_contact, string sp_address, string sp_password)
@@ -147,6 +189,7 @@ namespace App7
             db.ExecSQL(admin_creatTable);
             db.ExecSQL(sales_person_creatTable);
             db.ExecSQL(category_creatTable);
+            db.ExecSQL(product_creatTable);
             //insertAdmin("admin","abc");
             string insertStm = "Insert into " + admin_tablename + " values('admin', 'abc');";
             Console.WriteLine(insertStm);
