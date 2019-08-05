@@ -19,7 +19,7 @@ android:src="@drawable/sales"
 android:layout_width="wrap_content"
 android:layout_height="wrap_content"
 
-android:text="Purchase"
+android:text="Order"
 android:fontFamily="Times New Roman"
 android:textStyle="bold"
 android:textSize="30dp"
@@ -31,8 +31,8 @@ android:textColor="#FD9927"
         android:fadingEdge="vertical"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:id="@+id/spinner_pur1"  
-		android:hint="Vendor Name 1"
+        android:id="@+id/spinner_order"  
+		
 		android:layout_marginTop="20dp"
 		android:layout_marginBottom="20dp"
 		android:dropDownWidth="fill_parent"
@@ -46,17 +46,19 @@ android:textColor="#FD9927"
 		<Spinner
         android:layout_height="wrap_content"
         android:layout_width="300dp"
-        android:id="@+id/spinner_pur2"  
+        android:id="@+id/spinner_order2"  
 		android:layout_gravity="left"
 			android:layout_weight=".6"
-			android:hint="All Category"
+			
+			
+			
 			android:backgroundTint="@color/abc_primary_text_material_light"
     />
 	<DatePicker
 		android:layout_height="100dp"
 		android:layout_width="300dp"
 			android:layout_weight="1.4"
-			android:id="@+id/datepick_pur"
+			android:id="@+id/datepick_order"
 			android:layout_gravity="right"
 		/>
 		
@@ -70,7 +72,7 @@ android:textColor="#FD9927"
         android:layout_height="50dp"
         android:layout_width="match_parent"
         android:background="#ffffff"
-        android:id="@+id/searchID_pro"
+        android:id="@+id/searchID_order"
     
 		android:queryHint="Search Product Name"
     /> 
@@ -81,7 +83,7 @@ android:textColor="#FD9927"
     android:layout_height="wrap_content">
     
         <TextView
-            android:id="@+id/product_name"
+            android:id="@+id/order_product_name"
             android:layout_width="150dp" 
             android:layout_height="75dp"
             android:background="#ffffff"
@@ -89,7 +91,7 @@ android:textColor="#FD9927"
 		android:hint="Product Name"
          />   
          <TextView
-            android:id="@+id/price"
+            android:id="@+id/pro_price"
             android:background="#ffffff"
             android:layout_width="150dp" 
             android:layout_height="75dp"
@@ -99,7 +101,7 @@ android:textColor="#FD9927"
          />   
 	<TextView
 		android:textSize="20dp"
-		 android:id="@+id/qty"
+		 android:id="@+id/pro_qty"
             android:background="#ffffff"
             android:layout_width="150dp" 
             android:layout_height="75dp"
@@ -116,7 +118,7 @@ android:textColor="#FD9927"
     <ListView
         android:layout_width="match_parent"
         android:layout_height="400dp"
-        android:id="@+id/listView1"
+        android:id="@+id/order_listView1"
     />
 	</LinearLayout>
 </LinearLayout>

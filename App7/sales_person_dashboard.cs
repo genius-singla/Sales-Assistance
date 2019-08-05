@@ -25,6 +25,7 @@ namespace App7
         string user_email;
         string user_name;
         LinearLayout sales_chg_pswd;
+        LinearLayout add_order;
        
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -35,6 +36,7 @@ namespace App7
             user_email = Intent.GetStringExtra("email");
             user_name = Intent.GetStringExtra("salesPersonName");
             sales_chg_pswd = FindViewById<LinearLayout>(Resource.Id.sales_layout_chg_pswd);
+            add_order = FindViewById<LinearLayout>(Resource.Id.addorder1);
             
 
             //Title Bar
@@ -48,6 +50,14 @@ namespace App7
                 newscreen.PutExtra("userName", user_email);
                 StartActivity(newscreen);
             };
+
+            add_order.Click += delegate
+            {
+                Intent newscreen = new Intent(this, typeof(Order));
+                
+                StartActivity(newscreen);
+            };
+
 
             DrawerLayout drawer = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
             ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, Resource.String.navigation_drawer_open, Resource.String.navigation_drawer_close);
