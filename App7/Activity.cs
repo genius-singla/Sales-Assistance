@@ -69,13 +69,13 @@ namespace App7
             chg_pswd_layout.Click += delegate
             {
                 //Console.WriteLine("Welcome to Registration Page");
-                Intent newscreen = new Intent(this, typeof(ViewCategory));
+                Intent newscreen = new Intent(this, typeof(Changepassword));
                 newscreen.PutExtra("userName", "admin");
                 StartActivity(newscreen);
             };
             add_category_link_layout.Click += delegate
             {
-                Intent newscreen = new Intent(this, typeof(Category));
+                Intent newscreen = new Intent(this, typeof(ViewCategory));
                 StartActivity(newscreen);
             };
             vendor_layout.Click += delegate

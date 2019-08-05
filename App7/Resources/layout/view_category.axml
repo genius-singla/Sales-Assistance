@@ -34,7 +34,8 @@ android:textColor="#FD9927"
 	android:background="#fff">
 	<ListView
 	android:layout_width="match_parent"
-	android:layout_height="wrap_content"
+	android:layout_height="500dp"
+			android:overScrollMode="always"
 	android:id="@+id/cat_list"/>
 </LinearLayout>
 	<ImageView
@@ -42,10 +43,9 @@ android:textColor="#FD9927"
 		android:id="@+id/img_id_cat"
 		 android:layout_width="50dp"
     android:layout_height="wrap_content"
-
-	android:layout_marginTop="450dp"
 	
     android:layout_alignParentRight="true"
 	android:layout_gravity="bottom|end"
-	android:clickable="true"/>
+	android:clickable="true"
+	/>
 </LinearLayout>

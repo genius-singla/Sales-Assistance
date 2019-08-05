@@ -3,8 +3,19 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-	android:background="#fff" >
+	android:background="#fff"
+	android:gravity="center_horizontal">
 	
+	<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Add Vendor"
+    android:fontFamily="Times New Roman"
+    android:textStyle="bold"
+    android:textSize="30dp"
+    android:textColor="#FD9927"
+    android:layout_margin="30dp"/>
+
 	<EditText
     android:id="@+id/company_name_id"
     android:layout_margin="30dp"
@@ -16,7 +27,7 @@
     android:backgroundTint="#02BBD2"/>
 	<EditText
 android:id="@+id/vendor_address"
-android:layout_marginBottom="30dp"
+android:layout_marginBottom="20dp"
 android:layout_width="300dp"
 android:layout_height="wrap_content"
 android:textColor="#A9A9A9"
@@ -34,7 +45,7 @@ android:id="@+id/city_text"
 android:layout_width="150dp"
 android:layout_height="wrap_content"
 android:textColor="#A9A9A9"
-android:layout_marginTop="30dp"
+android:layout_marginTop="20dp"
 android:hint="City"
 android:backgroundTint="#02BBD2"
 
@@ -44,7 +55,7 @@ android:id="@+id/vendor_street_id"
 android:layout_width="150dp"
 android:layout_height="wrap_content"
 android:textColor="#A9A9A9"
-android:layout_marginTop="30dp"
+android:layout_marginTop="20dp"
 android:layout_marginBottom="30dp"
 android:hint="State/Province"
 android:backgroundTint="#02BBD2"

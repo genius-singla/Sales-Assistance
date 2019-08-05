@@ -19,6 +19,7 @@ namespace App7
         DBHelper myDB;
         ListView listView;
         ICursor ic;
+        ImageView add_cat;
         CatCustomAdapter myCAdapter;
         List<CatObject> myCatList = new List<CatObject>();
         protected override void OnCreate(Bundle savedInstanceState)
@@ -27,6 +28,7 @@ namespace App7
 
             // Create your application here
             SetContentView(Resource.Layout.view_category);
+            add_cat = FindViewById<ImageView>(Resource.Id.img_id_cat);
             myDB = new DBHelper(this);
             myDB.category_list();
             ic = myDB.category_list();
@@ -41,6 +43,11 @@ namespace App7
                 myCatList.Add(new CatObject(a, b));
                 i++;
             }
+            add_cat.Click += delegate 
+            {
+                Intent newscreen = new Intent(this, typeof(Category));
+                StartActivity(newscreen);
+            };
             listView = FindViewById<ListView>(Resource.Id.cat_list);
             //myAdapter = new ArrayAdapter(this, Android.Resource.Layout.SimpleListItem1, myUsersList);
             myCAdapter = new CatCustomAdapter(this, myCatList);
