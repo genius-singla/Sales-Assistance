@@ -166,6 +166,13 @@ namespace App7
             return myresut;
         }
 
+        public ICursor product_list()
+        {
+            String selectStm = "Select * from " + product_tablename + ";";
+            ICursor myresut = connectionObj.RawQuery(selectStm, null);
+            return myresut;
+        }
+
         //Inserting entry of new sales person
         public void insertSalesPerson(string fname, string lname, string sp_email, string sp_contact, string sp_address, string sp_password)
         {

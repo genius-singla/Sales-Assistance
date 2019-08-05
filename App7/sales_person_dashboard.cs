@@ -26,6 +26,7 @@ namespace App7
         string user_name;
         LinearLayout sales_chg_pswd;
         LinearLayout add_order;
+        LinearLayout View_product;
        
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -37,6 +38,7 @@ namespace App7
             user_name = Intent.GetStringExtra("salesPersonName");
             sales_chg_pswd = FindViewById<LinearLayout>(Resource.Id.sales_layout_chg_pswd);
             add_order = FindViewById<LinearLayout>(Resource.Id.addorder1);
+            View_product = FindViewById<LinearLayout>(Resource.Id.addProduct);
             
 
             //Title Bar
@@ -55,6 +57,12 @@ namespace App7
             {
                 Intent newscreen = new Intent(this, typeof(Order));
                 
+                StartActivity(newscreen);
+            };
+            View_product.Click += delegate
+            {
+                Intent newscreen = new Intent(this, typeof(ViewProduct));
+
                 StartActivity(newscreen);
             };
 

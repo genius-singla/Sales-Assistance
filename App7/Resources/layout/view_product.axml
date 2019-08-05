@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+	android:background="#fff">
+	<ImageView
+android:layout_height="50dp"
+android:layout_width="50dp"
+android:id="@+id/image_pro_list_logo"
+android:layout_margin="20dp"
+		android:layout_gravity="center"
+android:src="@drawable/sales"
+ />
+	<TextView
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:id="@+id/Product_list_id"
+			android:layout_gravity="center"
+android:text="Product List"
+android:fontFamily="Times New Roman"
+android:textStyle="bold"
+android:textSize="30dp"
+android:textColor="#FD9927"
+		android:gravity="center"
+
+
+    />
+	<LinearLayout 
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+		android:layout_marginTop="20dp"
+	android:background="#fff">
+	<ListView
+	android:layout_width="match_parent"
+	android:layout_height="500dp"
+			android:overScrollMode="always"
+	android:id="@+id/pro_list"/>
+</LinearLayout>
+	<ImageView
+		android:src="@drawable/add"
+		android:id="@+id/img_id_product"
+		 android:layout_width="50dp"
+    android:layout_height="wrap_content"
+	
+    android:layout_alignParentRight="true"
+	android:layout_gravity="bottom|end"
+	android:clickable="true"
+	/>
+</LinearLayout>

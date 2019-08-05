@@ -70,6 +70,8 @@
     <Compile Include="Order.cs" />
     <Compile Include="Order_CustomAdapter.cs" />
     <Compile Include="Product.cs" />
+    <Compile Include="ProductCustomAdapter.cs" />
+    <Compile Include="ProductObject.cs" />
     <Compile Include="Purchase.cs" />
     <Compile Include="PurchaseList_CustomAdapter.cs" />
     <Compile Include="Purchase_CustomAdapter.cs" />
@@ -82,6 +84,7 @@
     <Compile Include="UserObject_purchaseList.cs" />
     <Compile Include="Vendor.cs" />
     <Compile Include="ViewCategory.cs" />
+    <Compile Include="ViewProduct.cs" />
     <Compile Include="View_purchase.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -303,6 +306,16 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\purchase_list_cellLayout.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\product_cell_layout.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\view_product.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
