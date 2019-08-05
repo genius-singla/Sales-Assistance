@@ -97,6 +97,10 @@ namespace App7
             {
 
             }
+            else if (id == Resource.Id.viewcustomer)
+            {
+
+            }
             else if (id == Resource.Id.changepassword)
             {
 

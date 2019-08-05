@@ -18,6 +18,10 @@
           android:icon="@drawable/addorder"
           android:title="Add order" />
       <item
+         android:id="@+id/viewcustomer"
+         android:icon="@drawable/c"
+         android:title="View Customer" />
+      <item
           android:id="@+id/changepassword"
           android:icon="@drawable/cp"
           android:title="Change Password" />
