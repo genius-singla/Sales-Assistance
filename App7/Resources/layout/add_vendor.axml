@@ -23,7 +23,6 @@
     android:layout_height="wrap_content"
     android:textColor="#A9A9A9"
     android:hint="Company Name"
-	android:inputType="textPassword"
     android:backgroundTint="#02BBD2"/>
 	<EditText
 android:id="@+id/vendor_address"

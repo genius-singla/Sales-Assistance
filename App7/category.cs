@@ -57,6 +57,10 @@ namespace App7
                 {
                     myDB = new DBHelper(this);
                     myDB.insertCategory(enter_category.Text, img_path);
+                    string toast = string.Format("Product Added Successfully!");
+                    Toast.MakeText(this, toast, ToastLength.Long).Show();
+                    Intent newscreen = new Intent(this, typeof(ViewCategory));
+                    StartActivity(newscreen);
 
                 }
             };

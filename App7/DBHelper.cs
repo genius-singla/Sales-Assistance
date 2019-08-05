@@ -51,6 +51,21 @@ namespace App7
             + sales_person_password + " Text);";
 
 
+        //      Inserting New Vendor
+        public void InsertVendor(string c_name, string v_address, string v_city, string v_province, string v_contact_name, string v_contact_number)
+        {
+            String selectStm = "Select ifnull(max(" + vendor_id + "),0) as max_id from " + vendor_tablename;
+            ICursor myresult = connectionObj.RawQuery(selectStm, null);
+            myresult.MoveToFirst();
+            var id = myresult.GetInt(myresult.GetColumnIndexOrThrow("max_id"));
+
+            string insertStatement = "Insert into " + vendor_tablename + " values(" + (id + 1) + ", '" + c_name + "', '"
+                + v_address + "', '" + v_city + "', '" + v_province + "', '" + v_contact_name + "', '" + v_contact_number + "');";
+            connectionObj.ExecSQL(insertStatement);
+            Console.WriteLine(insertStatement);
+        }
+
+
         /*      ***Product Table***      */
         public static string product_tablename = "product";
         public static string product_id = "pro_id";
@@ -86,6 +101,27 @@ namespace App7
             + category_id + " int, "
             + category_name + " Text, "
             + category_image + " image);";
+
+
+        /*      ***Vendor Table***      */
+        public static string vendor_tablename = "vendor";
+        public static string vendor_id = "vendor_id";
+        public static string vendor_Company_name = "v_company_name";
+        public static string vendor_address = "v_address";
+        public static string vendor_city = "v_city";
+        public static string vendor_province = "v_province";
+        public static string vendor_contact_person = "v_contact_person";
+        public static string vendor_contact_number = "v_contact_number";
+
+        //      Create Vendor Table
+        public string vendor_creatTable = "Create Table " + vendor_tablename + "("
+            + vendor_id + " int, "
+            + vendor_Company_name + " Text, "
+            + vendor_address + " Text, "
+            + vendor_city + " Text, "
+            + vendor_province + " Text, "
+            + vendor_contact_person + " Text, "
+            + vendor_contact_number + " Text);";
 
 
 
@@ -190,6 +226,7 @@ namespace App7
             db.ExecSQL(sales_person_creatTable);
             db.ExecSQL(category_creatTable);
             db.ExecSQL(product_creatTable);
+            db.ExecSQL(vendor_creatTable);
             //insertAdmin("admin","abc");
             string insertStm = "Insert into " + admin_tablename + " values('admin', 'abc');";
             Console.WriteLine(insertStm);
