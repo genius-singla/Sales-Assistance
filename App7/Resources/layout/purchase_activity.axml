@@ -114,9 +114,20 @@ android:textColor="#FD9927"
 	
 
     <ListView
-        android:layout_width="match_parent"
-        android:layout_height="400dp"
+       android:layout_width="match_parent"
+	android:layout_height="300dp"
+			android:overScrollMode="always"
         android:id="@+id/listView1"
     />
 	</LinearLayout>
+	<Button
+    android:layout_marginTop="20dp"
+    android:id="@+id/purchase_btn"
+    android:layout_width="300dp"
+    android:layout_height="50dp"
+		android:gravity="center"
+    android:background="#FD9927"
+    android:textColor="#ffffff"
+    android:textStyle="bold"
+    android:text="Place Order"/>
 </LinearLayout>

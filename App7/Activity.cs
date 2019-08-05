@@ -64,7 +64,7 @@ namespace App7
 
             purchase_layout.Click += delegate
               {
-                  Intent newscreen = new Intent(this, typeof(Purchase));
+                  Intent newscreen = new Intent(this, typeof(View_purchase));
                   StartActivity(newscreen);
               };
             reg_layout.Click += delegate

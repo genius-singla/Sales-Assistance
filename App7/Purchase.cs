@@ -22,6 +22,7 @@ namespace App7
         Spinner spinner_purchase1;
         Spinner spinner_purchase2;
         ListView listView;
+        Button purchase_button;
         ImageView logo_pur;
         string[] vendor = { "gill saab", "sandy", "genius" };
         string[] myUnit1 = { "Kg", "lb" };
@@ -36,6 +37,7 @@ namespace App7
             spinner_purchase1 = FindViewById<Spinner>(Resource.Id.spinner_pur1);
             spinner_purchase2 = FindViewById<Spinner>(Resource.Id.spinner_pur2);
             logo_pur = FindViewById<ImageView>(Resource.Id.image_logo_pur);
+            purchase_button = FindViewById<Button>(Resource.Id.purchase_btn);
             listView = FindViewById<ListView>(Resource.Id.listView1);
             date = FindViewById<DatePicker>(Resource.Id.datepick_pur);
             spinner_purchase1.Adapter = new ArrayAdapter
