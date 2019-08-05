@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+	android:background="#ffffff"
+	android:paddingLeft="20dp"
+	android:paddingRight="20dp"
+    android:gravity="center_horizontal">
+	<ImageView
+android:layout_height="50dp"
+android:layout_width="50dp"
+android:id="@+id/image_logo_pur"
+android:layout_margin="20dp"
+android:src="@drawable/add"
+ />
+	<TextView
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+
+android:text="Purchase"
+android:fontFamily="Times New Roman"
+android:textStyle="bold"
+android:textSize="30dp"
+android:textColor="#FD9927"
+
+
+    />
+	<Spinner
+        android:fadingEdge="vertical"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:id="@+id/spinner_pur1"  
+		android:hint="Vendor Name 1"
+		android:layout_marginTop="20dp"
+		android:layout_marginBottom="20dp"
+		android:dropDownWidth="fill_parent"
+    />
+	<LinearLayout
+		 android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:orientation="horizontal"
+		android:layout_marginTop="20dp"
+		android:weightSum="2">
+		<Spinner
+        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:id="@+id/spinner_pur2"  
+		android:layout_gravity="left"
+			android:layout_weight=".6"
+			android:hint="All Category"
+			android:backgroundTint="@color/abc_primary_text_material_light"
+    />
+	<DatePicker
+		android:layout_height="100dp"
+		android:layout_width="300dp"
+			android:layout_weight="1.4"
+			android:id="@+id/datepick_pur"
+			android:layout_gravity="right"
+		/>
+		
+	
+		</LinearLayout>
+	
+	
+		
+	 <SearchView
+		android:layout_marginTop="20dp"
+        android:layout_height="50dp"
+        android:layout_width="match_parent"
+        android:background="#ffffff"
+        android:id="@+id/searchID_pro"
+    android:hint=" Search Product Name"
+    /> 
+	<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" 
+    android:orientation="horizontal"
+    android:layout_width="wrap_content" 
+    android:layout_height="wrap_content">
+    
+        <TextView
+            android:id="@+id/product_name"
+            android:layout_width="150dp" 
+            android:layout_height="75dp"
+            android:background="#ffffff"
+		android:textSize="20dp"
+		android:hint="Product Name"
+         />   
+         <TextView
+            android:id="@+id/price"
+            android:background="#ffffff"
+            android:layout_width="150dp" 
+            android:layout_height="75dp"
+		android:hint="Price"
+		android:textSize="20dp"
+			android:paddingLeft="30dp"
+         />   
+	<EditText
+		android:textSize="20dp"
+		 android:id="@+id/qty"
+            android:background="#ffffff"
+            android:layout_width="150dp" 
+            android:layout_height="75dp"
+		android:hint="Qty." />
+		</LinearLayout>
+	<LinearLayout 
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+		android:layout_marginTop="10dp"
+	android:background="#ffffff">
+	
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:id="@+id/listView1"
+    />
+	</LinearLayout>
+</LinearLayout>
