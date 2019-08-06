@@ -50,6 +50,8 @@ namespace App7
             + sales_person_address + " Text, "
             + sales_person_password + " Text);";
 
+        
+
 
         //      Inserting New Vendor
         public void InsertVendor(string c_name, string v_address, string v_city, string v_province, string v_contact_name, string v_contact_number)
@@ -164,6 +166,14 @@ namespace App7
         public ICursor category_list()
         {
             String selectStm = "Select * from " + category + ";";
+            ICursor myresut = connectionObj.RawQuery(selectStm, null);
+            return myresut;
+        }
+
+        //Getting Vendor list
+        internal ICursor vendor_list()
+        {
+            String selectStm = "Select * from " + vendor_tablename + ";";
             ICursor myresut = connectionObj.RawQuery(selectStm, null);
             return myresut;
         }

@@ -18,7 +18,8 @@ namespace App7
         ListView PoductlistView;
         ICursor ic;
         List<PurchaseList_CustomAdapter> myProList = new List<PurchaseList_CustomAdapter>();
-
+        int ven_id;
+        int cat = 0;
         Purchase_CustomAdapter searchAdapter;
         Android.Widget.SearchView sv;
 
@@ -29,8 +30,11 @@ namespace App7
         ListView listView;
         Button purchase_button;
         ImageView logo_pur;
-        string[] vendor = { "gill saab", "sandy", "genius" };
-        string[] myUnit1 = { "Kg", "lb" };
+        List<string> vendor = new List<string>();
+        Dictionary<string, int> vendor_dict = new Dictionary<string, int>();
+        //string[] vendor = { "gill saab", "sandy", "genius" };
+        List<string> myUnit1 = new List<string>();
+        Dictionary<string, int> category_dict = new Dictionary<string, int>();
         Purchase_CustomAdapter myCAdapter;
 
         List<UserObject_purchase> myUsersList = new List<UserObject_purchase>();
@@ -45,6 +49,33 @@ namespace App7
             purchase_button = FindViewById<Button>(Resource.Id.purchase_btn);
             listView = FindViewById<ListView>(Resource.Id.listView1);
             date = FindViewById<EditText>(Resource.Id.edt_txt_date);
+            myDB = new DBHelper(this);
+            myDB.vendor_list();
+            ic = myDB.vendor_list();
+            
+            int j = 0;
+            while (ic.MoveToNext())
+            {
+                var a = ic.GetString(ic.GetColumnIndex("v_company_name"));
+                var b = ic.GetInt(ic.GetColumnIndex("vendor_id"));
+                vendor_dict.Add(a, b);
+                vendor.Add(a);
+                j++;
+            }
+
+            myDB.vendor_list();
+            ic = myDB.category_list();
+            myUnit1.Add("All Categories");
+            int k = 0;
+            while (ic.MoveToNext())
+            {
+                var a = ic.GetString(ic.GetColumnIndex("cat_name"));
+                var b = ic.GetInt(ic.GetColumnIndex("cat_id"));
+                myUnit1.Add(a);
+                category_dict.Add(a, b);
+                k++;
+            }
+
 
             date.Text = System.DateTime.Now.ToShortDateString();
             myDB = new DBHelper(this);
@@ -61,19 +92,18 @@ namespace App7
                 myUsersList.Add(new UserObject_purchase(a, b));
                 i++;
             }
-
-
+            
             spinner_purchase1.Adapter = new ArrayAdapter
               (this, Android.Resource.Layout.SimpleListItem1, vendor);
 
             spinner_purchase1.ItemSelected += MyItemSelectedMethod2;
+
+
             spinner_purchase2.Adapter = new ArrayAdapter
              (this, Android.Resource.Layout.SimpleListItem1, myUnit1);
-
-
+            
             spinner_purchase2.ItemSelected += MyItemSelectedMethod3;
-
-            //myAdapter = new ArrayAdapter(this, Android.Resource.Layout.SimpleListItem1, myUsersList);
+            
             myCAdapter = new Purchase_CustomAdapter(this, myUsersList);
             listView.Adapter = myCAdapter;
             listView.ItemClick += listView_ItemClick;
@@ -86,14 +116,7 @@ namespace App7
             var index = e.Position;
 
             var value = vendor[index];
-            System.Console.WriteLine("value is " + value);
-
-
-            if (value.ToLower().Equals("Action"))
-            {
-                //create a veg array and create as a new adater 
-
-            }
+            category_dict.TryGetValue(value, out cat);
 
         }
 
@@ -104,12 +127,7 @@ namespace App7
             var value = myUnit1[index];
             System.Console.WriteLine("value is " + value);
 
-
-            if (value.ToLower().Equals("Action"))
-            {
-                //create a veg array and create as a new adater 
-
-            }
+            vendor_dict.TryGetValue(value, out ven_id);
 
         }
 
