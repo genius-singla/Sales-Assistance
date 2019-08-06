@@ -48,10 +48,9 @@ namespace App7
             {
                 myView = mycontext.LayoutInflater.Inflate(Resource.Layout.purchase_cellLayout, null);
             }
-            myView.FindViewById<TextView>(Resource.Id.product_name).Text = myObj.name;
-            myView.FindViewById<TextView>(Resource.Id.price).Text = myObj.pr;
-
-            myView.FindViewById<TextView>(Resource.Id.qty).Text = (myObj.qt).ToString();
+            myView.FindViewById<TextView>(Resource.Id.p_pro_name).Text = myObj.name;
+            myView.FindViewById<TextView>(Resource.Id.p_price).Text = (myObj.pr).ToString();
+            
             return myView;
         }
     }

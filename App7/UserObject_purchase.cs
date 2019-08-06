@@ -16,14 +16,12 @@ namespace App7
     {
 
         public String name;
-        public String pr;
-        public int qt;
+        public int pr;
 
-        public UserObject_purchase(string product_name, string price, int qty)
+        public UserObject_purchase(string product_name, int price)
         {
             name = product_name;
             pr = price;
-            qt = qty;
         }
     }
 }

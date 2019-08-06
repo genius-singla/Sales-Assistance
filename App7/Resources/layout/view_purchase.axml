@@ -15,19 +15,15 @@ android:src="@drawable/sales"
 	<TextView
 android:layout_width="wrap_content"
 android:layout_height="wrap_content"
-
-			android:layout_gravity="center"
+android:layout_gravity="center"
 android:text="Purchase List"
 android:fontFamily="Times New Roman"
 android:textStyle="bold"
 android:textSize="30dp"
 android:textColor="#FD9927"
-		android:gravity="center"
-
-
-    />
-	<LinearLayout
-   
+android:gravity="center"
+/>
+	<LinearLayout   
     android:orientation="horizontal"
     android:layout_width="wrap_content" 
     android:layout_height="wrap_content"
@@ -38,9 +34,8 @@ android:textColor="#FD9927"
             android:layout_height="75dp"
             android:background="#ffffff"
 		android:textSize="20dp"
-			
 		android:hint="ID"
-			android:layout_weight=".15"
+		android:layout_weight=".15"
          /> 
         <TextView
             android:id="@+id/vendor_name_list"
@@ -48,11 +43,9 @@ android:textColor="#FD9927"
             android:layout_height="75dp"
             android:background="#ffffff"
 		android:textSize="20dp"
-		
 		android:hint="Vendor Name"
 		android:layout_weight=".3"	
 	android:paddingRight="5dp"
-			
 		/>   
          <TextView
             android:id="@+id/totalAmount_purList"

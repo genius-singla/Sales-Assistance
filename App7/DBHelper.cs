@@ -140,6 +140,8 @@ namespace App7
 
         }
 
+
+        //Inserting New Product
         public void InsertProduct(int cat_id, string product_name, string unit_val, int product_purchase_price, int product_sell_price, string product_image)
         {
             String selectStm = "Select ifnull(max(" + product_id + "),0) as max_id from " + product_tablename;
@@ -166,6 +168,7 @@ namespace App7
             return myresut;
         }
 
+        //Getting Product List
         public ICursor product_list()
         {
             String selectStm = "Select * from " + product_tablename + ";";

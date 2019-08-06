@@ -14,11 +14,16 @@ namespace App7
     [Activity(Label = "@string/app_name", Theme = "@style/AppTheme.NoActionBar")]
     public class Purchase :Activity
     {
+        DBHelper myDB;
+        ListView PoductlistView;
+        ICursor ic;
+        List<PurchaseList_CustomAdapter> myProList = new List<PurchaseList_CustomAdapter>();
+
         Purchase_CustomAdapter searchAdapter;
         Android.Widget.SearchView sv;
 
         //string[] myArray;
-        DatePicker date;
+        EditText date;
         Spinner spinner_purchase1;
         Spinner spinner_purchase2;
         ListView listView;
@@ -39,7 +44,25 @@ namespace App7
             logo_pur = FindViewById<ImageView>(Resource.Id.image_logo_pur);
             purchase_button = FindViewById<Button>(Resource.Id.purchase_btn);
             listView = FindViewById<ListView>(Resource.Id.listView1);
-            date = FindViewById<DatePicker>(Resource.Id.datepick_pur);
+            date = FindViewById<EditText>(Resource.Id.edt_txt_date);
+
+            date.Text = System.DateTime.Now.ToShortDateString();
+            myDB = new DBHelper(this);
+            myDB.product_list();
+            ic = myDB.product_list();
+
+            int i = 0;
+            while (ic.MoveToNext())
+            {
+                var a = ic.GetString(ic.GetColumnIndex("pro_name"));
+                var b = ic.GetInt(ic.GetColumnIndex("purchase_price"));
+                Console.WriteLine(a);
+                Console.WriteLine(b);
+                myUsersList.Add(new UserObject_purchase(a, b));
+                i++;
+            }
+
+
             spinner_purchase1.Adapter = new ArrayAdapter
               (this, Android.Resource.Layout.SimpleListItem1, vendor);
 

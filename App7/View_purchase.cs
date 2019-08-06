@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
 using Android.App;
 using Android.Content;
 using Android.Database;
@@ -16,7 +15,6 @@ namespace App7
     [Activity(Label = "View_purchase", Theme = "@style/AppTheme.NoActionBar")]
     public class View_purchase : Activity
     {
-
         ListView listView;
         ICursor ic;
         TextView id;
