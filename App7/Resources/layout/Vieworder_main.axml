@@ -7,73 +7,84 @@
 	<ImageView
 android:layout_height="50dp"
 android:layout_width="50dp"
-android:id="@+id/image_pro_list_logo"
+
 android:layout_margin="20dp"
 		android:layout_gravity="center"
-android:src="@drawable/sales"
+android:src="@drawable/mysales"
  />
 	<TextView
 android:layout_width="wrap_content"
 android:layout_height="wrap_content"
-android:id="@+id/Product_list_id"
-			android:layout_gravity="center"
-android:text="Product List"
+android:layout_gravity="center"
+android:text="Order List"
 android:fontFamily="Times New Roman"
 android:textStyle="bold"
 android:textSize="30dp"
 android:textColor="#FD9927"
-		android:gravity="center"
-
-
-    />
-	<LinearLayout
-	android:orientation="horizontal"
+android:gravity="center"
+/>
+	<LinearLayout   
+    android:orientation="horizontal"
     android:layout_width="wrap_content" 
     android:layout_height="wrap_content"
 		android:weightSum="1">
      <TextView
-            android:id="@+id/Prod_imgtitle"
+            android:id="@+id/order_id_orderList"
             android:layout_width="match_parent" 
             android:layout_height="75dp"
             android:background="#ffffff"
 		android:textSize="20dp"
-		android:hint="Image"
+		android:hint="ID"
 		android:layout_weight=".25"
 			android:layout_marginLeft="40dp"
 			
          /> 
         <TextView
-            android:id="@+id/pro_name_list"
+            android:id="@+id/customer_name_list"
             android:layout_width="match_parent" 
             android:layout_height="75dp"
             android:background="#ffffff"
 		android:textSize="20dp"
-		android:hint="Product Name"
-			android:layout_marginLeft="50dp"
+		android:hint="Customer Name"
+			android:layout_marginLeft="20dp"
 		android:layout_weight=".25"	
 	
 		/>   
+         <TextView
+            android:id="@+id/totalAmount_OrderList"
+            android:background="#ffffff"
+            android:layout_width="match_parent" 
+            android:layout_height="75dp"
+		android:text="Amt."
+		android:textSize="20dp"
+			android:layout_marginLeft="20dp"
+			android:layout_weight=".25"
+		
+         />   
+	<TextView
+		android:textSize="20dp"
+		 android:id="@+id/date_purList"
+            android:background="#ffffff"
+            android:layout_width="match_parent" 
+            android:layout_height="75dp"
+		android:text="Date"
+			android:layout_marginLeft="20dp"
+			
+			
+		android:layout_weight=".25"
+		/>
 		</LinearLayout>
 	<LinearLayout 
     android:orientation="vertical"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-		android:layout_marginTop="20dp"
+		android:layout_marginTop="10dp"
 	android:background="#fff">
 	<ListView
 	android:layout_width="match_parent"
 	android:layout_height="500dp"
 			android:overScrollMode="always"
-	android:id="@+id/pro_list"/>
+	android:id="@+id/order_list"/>
 </LinearLayout>
-	<ImageView
-		android:src="@drawable/add"
-		android:id="@+id/img_id_product"
-		 android:layout_width="50dp"
-    android:layout_height="wrap_content"
 	
-    android:layout_alignParentRight="true"
-	android:layout_gravity="bottom|end"
-	android:clickable="true"
-	/>
 </LinearLayout>

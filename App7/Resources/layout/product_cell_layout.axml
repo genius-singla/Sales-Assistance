@@ -22,22 +22,8 @@
 		android:textColor="#000"
 		android:textSize="18dp"
 		/>
-	<ImageView
-		android:layout_width="30dp" 
-        android:layout_height="30dp"
-        android:id="@+id/pro_edit"
-		android:layout_weight=".15"
-		android:clickable="true"
-		android:src="@drawable/edit"
-		/>
-	<ImageView
-		android:layout_width="30dp" 
-        android:layout_height="30dp"
-        android:id="@+id/pro_trash"
-		android:layout_weight=".15"
-		android:clickable="true"
-		android:src="@drawable/trash"
-		/>
+
+	
 	
 	
 

@@ -27,6 +27,7 @@ namespace App7
         LinearLayout sales_chg_pswd;
         LinearLayout add_order;
         LinearLayout View_product;
+        LinearLayout view_order;
        
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -39,6 +40,7 @@ namespace App7
             sales_chg_pswd = FindViewById<LinearLayout>(Resource.Id.sales_layout_chg_pswd);
             add_order = FindViewById<LinearLayout>(Resource.Id.addorder1);
             View_product = FindViewById<LinearLayout>(Resource.Id.addProduct);
+            view_order = FindViewById<LinearLayout>(Resource.Id.View_order);
             
 
             //Title Bar
@@ -62,6 +64,12 @@ namespace App7
             View_product.Click += delegate
             {
                 Intent newscreen = new Intent(this, typeof(ViewProduct));
+
+                StartActivity(newscreen);
+            };
+            view_order.Click += delegate
+            {
+                Intent newscreen = new Intent(this, typeof(View_order));
 
                 StartActivity(newscreen);
             };

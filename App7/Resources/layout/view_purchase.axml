@@ -34,8 +34,9 @@ android:gravity="center"
             android:layout_height="75dp"
             android:background="#ffffff"
 		android:textSize="20dp"
+			android:layout_marginLeft="20dp"
 		android:hint="ID"
-		android:layout_weight=".15"
+		android:layout_weight=".25"
          /> 
         <TextView
             android:id="@+id/vendor_name_list"
@@ -44,8 +45,9 @@ android:gravity="center"
             android:background="#ffffff"
 		android:textSize="20dp"
 		android:hint="Vendor Name"
-		android:layout_weight=".3"	
-	android:paddingRight="5dp"
+			android:layout_marginLeft="20dp"
+		android:layout_weight=".25"	
+	
 		/>   
          <TextView
             android:id="@+id/totalAmount_purList"
@@ -54,8 +56,9 @@ android:gravity="center"
             android:layout_height="75dp"
 		android:text="Total Amount"
 		android:textSize="20dp"
-			android:layout_weight=".3"
-		android:paddingRight="5dp"
+			android:layout_marginLeft="20dp"
+			android:layout_weight=".25"
+		
          />   
 	<TextView
 		android:textSize="20dp"
@@ -64,7 +67,8 @@ android:gravity="center"
             android:layout_width="match_parent" 
             android:layout_height="75dp"
 		android:text="Date"
-			android:paddingRight="5dp"
+			android:layout_marginLeft="20dp"
+			
 		android:layout_weight=".25"
 		/>
 		</LinearLayout>

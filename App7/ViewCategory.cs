@@ -32,7 +32,7 @@ namespace App7
             // Create your application here
             SetContentView(Resource.Layout.view_category);
             add_cat = FindViewById<ImageView>(Resource.Id.img_id_cat);
-            dlt_btn = FindViewById<ImageView>(Resource.Id.cat_trash);
+            
             listView = FindViewById<ListView>(Resource.Id.cat_list);
             show_category();
             alert = new Android.App.AlertDialog.Builder(this);
