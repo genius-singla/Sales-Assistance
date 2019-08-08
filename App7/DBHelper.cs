@@ -61,6 +61,14 @@ namespace App7
             + sales_person_address + " Text, "
             + sales_person_password + " Text);";
 
+        internal void deleteCategoryItem(string catname)
+        {
+            string dltStm = "Delete from " + category + " where "+category_name+"='" + catname + "'";
+            Console.WriteLine(dltStm);
+            System.Console.WriteLine("My SQL  delete STM \n  \n" + dltStm);
+            connectionObj.ExecSQL(dltStm);
+        }
+
 
         /*      ***Customer Table***      */
         public static string customer_tablename = "customer";

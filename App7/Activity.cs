@@ -98,13 +98,11 @@ namespace App7
             };
             product_layout.Click+= delegate
             {
-                Intent newscreen = new Intent(this, typeof(Product));
+                Intent newscreen = new Intent(this, typeof(ViewProduct));
                 StartActivity(newscreen);
             };
         }
         
-
-
         /*public override void OnBackPressed()
         {
             DrawerLayout drawer = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);

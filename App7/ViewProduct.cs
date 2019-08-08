@@ -23,6 +23,7 @@ namespace App7
         ImageView add_pro;
         ProductCustomAdapter myProdapter;
         List<ProductObject> myProList = new List<ProductObject>();
+       
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -44,11 +45,11 @@ namespace App7
                 myProList.Add(new ProductObject(a));
                 i++;
             }
-            /*add_pro.Click += delegate
+            add_pro.Click += delegate
             {
-                Intent newscreen = new Intent(this, typeof(Category));
+                Intent newscreen = new Intent(this, typeof(Product));
                 StartActivity(newscreen);
-            };*/
+            };
             listView = FindViewById<ListView>(Resource.Id.pro_list);
             //myAdapter = new ArrayAdapter(this, Android.Resource.Layout.SimpleListItem1, myUsersList);
             myProdapter = new ProductCustomAdapter(this, myProList);

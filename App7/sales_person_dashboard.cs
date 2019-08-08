@@ -19,7 +19,7 @@ using Android.Widget;
 
 namespace App7
 {
-    [Activity(Label = "sales_person_dashboard", Theme = "@style/AppTheme.NoActionBar", MainLauncher = true)]
+    [Activity(Label = "sales_person_dashboard", Theme = "@style/AppTheme.NoActionBar")]
     public class sales_person_dashboard : AppCompatActivity, NavigationView.IOnNavigationItemSelectedListener
     {
         string user_email;
