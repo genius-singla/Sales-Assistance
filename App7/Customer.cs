@@ -23,6 +23,7 @@ namespace App7
         EditText cust_contact_no;
         EditText cust_email;
         Button ad_cust;
+        DBHelper myDB;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -37,6 +38,16 @@ namespace App7
             cust_email = FindViewById<EditText>(Resource.Id.cust_email);
 
             // Create your application here
+            ad_cust.Click += AddCustomer;
+        }
+
+        private void AddCustomer(object sender, EventArgs e)
+        {
+            myDB = new DBHelper(this);
+            myDB.InsertCustomer(cust_cmpny_name.Text, cust_address.Text,
+                cust_city.Text, cust_province.Text, cust_contact_nme.Text, cust_contact_no.Text, cust_email.Text);
+            string toast = string.Format("Customer Added Successfully!");
+            Toast.MakeText(this, toast, ToastLength.Long).Show();
         }
     }
 }

@@ -28,7 +28,18 @@ namespace App7
         //create database
         public string admin_creatTable = "Create Table " + admin_tablename + "(" + admin_name + " Text, " + admin_password + " Text);";
 
-        
+        /*      ***Purchase Table***       */
+        public static string purchase_tablename = "purchase";
+        public static string purchase_id = "pur_id";
+        public static string ven_id = "vendor_id";
+        public static string purchase_date = "pur_date";
+        public static string purchase_amount = "pur_amt";
+        //create database
+        public string purchase_creatTable = "Create Table " + purchase_tablename + "(" + purchase_id + " int, "
+            + ven_id + " int, "
+            + purchase_date + " Text, "
+            + purchase_amount + " int);";
+
 
         /*      ***Sales Person Table***      */
         public static string sales_person_tablename = "sales_person";
@@ -50,8 +61,43 @@ namespace App7
             + sales_person_address + " Text, "
             + sales_person_password + " Text);";
 
-        
 
+        /*      ***Customer Table***      */
+        public static string customer_tablename = "customer";
+        public static string customer_id = "customer_id";
+        public static string customer_Company_name = "c_company_name";
+        public static string customer_address = "c_address";
+        public static string customer_city = "c_city";
+        public static string customer_province = "c_province";
+        public static string customer_contact_person = "c_contact_person";
+        public static string customer_contact_number = "c_contact_number";
+        public static string customer_email = "c_email";
+
+        //      Create Customer Table
+        public string customer_creatTable = "Create Table " + customer_tablename + "("
+            + customer_id + " int, "
+            + customer_Company_name + " Text, "
+            + customer_address + " Text, "
+            + customer_city + " Text, "
+            + customer_province + " Text, "
+            + customer_contact_person + " Text, "
+            + customer_contact_number + " Text, "
+            + customer_email + " Text);";
+
+
+        //      Inserting New Customer
+        public void InsertCustomer(string cust_cmpny_name, string cust_address, string cust_city, string cust_province, string cust_contact_nme, string cust_contact_no, string cust_email)
+        {
+            String selectStm = "Select ifnull(max(" + customer_id + "),0) as max_id from " + customer_tablename;
+            ICursor myresult = connectionObj.RawQuery(selectStm, null);
+            myresult.MoveToFirst();
+            var id = myresult.GetInt(myresult.GetColumnIndexOrThrow("max_id"));
+
+            string insertStatement = "Insert into " + customer_tablename + " values(" + (id + 1) + ", '" + cust_cmpny_name + "', '"
+                + cust_address + "', '" + cust_city + "', '" + cust_province + "', '" + cust_contact_nme + "', '" + cust_contact_no + "', '" + cust_email + "');";
+            connectionObj.ExecSQL(insertStatement);
+            Console.WriteLine(insertStatement);
+        }
 
         //      Inserting New Vendor
         public void InsertVendor(string c_name, string v_address, string v_city, string v_province, string v_contact_name, string v_contact_number)
@@ -65,6 +111,21 @@ namespace App7
                 + v_address + "', '" + v_city + "', '" + v_province + "', '" + v_contact_name + "', '" + v_contact_number + "');";
             connectionObj.ExecSQL(insertStatement);
             Console.WriteLine(insertStatement);
+        }
+
+        //      Inserting Purchase data
+        public void insertPurchase(int ven_id, string date, int total_amt)
+        {
+            String selectStm = "Select ifnull(max(" + purchase_id + "),0) as max_id from " + purchase_tablename;
+            ICursor myresult = connectionObj.RawQuery(selectStm, null);
+            myresult.MoveToFirst();
+            var id = myresult.GetInt(myresult.GetColumnIndexOrThrow("max_id"));
+
+            string insertStatement = "Insert into " + purchase_tablename + " values(" + (id + 1) + ", " + ven_id + ", '"
+                + date + "', " + total_amt + ");";
+            connectionObj.ExecSQL(insertStatement);
+            Console.WriteLine(insertStatement);
+
         }
 
 
@@ -125,6 +186,8 @@ namespace App7
             + vendor_contact_person + " Text, "
             + vendor_contact_number + " Text);";
 
+        
+
 
 
         // Inserting new Category
@@ -174,6 +237,13 @@ namespace App7
         internal ICursor vendor_list()
         {
             String selectStm = "Select * from " + vendor_tablename + ";";
+            ICursor myresut = connectionObj.RawQuery(selectStm, null);
+            return myresut;
+        }
+        //Getting Product List for particular category
+        public ICursor product_list1(int cat)
+        {
+            String selectStm = "Select * from " + product_tablename + " where " + cat_id + "= '" + cat + "';";
             ICursor myresut = connectionObj.RawQuery(selectStm, null);
             return myresut;
         }
@@ -247,23 +317,17 @@ namespace App7
             db.ExecSQL(category_creatTable);
             db.ExecSQL(product_creatTable);
             db.ExecSQL(vendor_creatTable);
+            db.ExecSQL(purchase_creatTable);
+            db.ExecSQL(customer_creatTable);
             //insertAdmin("admin","abc");
             string insertStm = "Insert into " + admin_tablename + " values('admin', 'abc');";
             Console.WriteLine(insertStm);
             db.ExecSQL(insertStm);
         }
 
-        //Insert data into admin table
-        public void insertAdmin(string uname, string upass)
-        {
-            
-            //connectionObj.ExecSQL(insertStm);
-        }
-
         public ICursor chk_admin_passwod()
         {
             String selectStm = "Select * from " + admin_tablename;
-
             ICursor myresut = connectionObj.RawQuery(selectStm, null);
             return myresut;
         }

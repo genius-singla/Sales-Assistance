@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using Android.Database;
 using System;
 using Android.Support.V7.Widget;
-
+using Android.Text;
 
 namespace App7
 {
@@ -15,15 +15,14 @@ namespace App7
     public class Purchase :Activity
     {
         DBHelper myDB;
-        ListView PoductlistView;
         ICursor ic;
-        List<PurchaseList_CustomAdapter> myProList = new List<PurchaseList_CustomAdapter>();
         int ven_id;
         int cat = 0;
+        int ind;
+        int total_amt = 0;
         Purchase_CustomAdapter searchAdapter;
         Android.Widget.SearchView sv;
-
-        //string[] myArray;
+        
         EditText date;
         Spinner spinner_purchase1;
         Spinner spinner_purchase2;
@@ -31,8 +30,9 @@ namespace App7
         Button purchase_button;
         ImageView logo_pur;
         List<string> vendor = new List<string>();
+
         Dictionary<string, int> vendor_dict = new Dictionary<string, int>();
-        //string[] vendor = { "gill saab", "sandy", "genius" };
+        
         List<string> myUnit1 = new List<string>();
         Dictionary<string, int> category_dict = new Dictionary<string, int>();
         Purchase_CustomAdapter myCAdapter;
@@ -50,10 +50,9 @@ namespace App7
             listView = FindViewById<ListView>(Resource.Id.listView1);
             date = FindViewById<EditText>(Resource.Id.edt_txt_date);
             myDB = new DBHelper(this);
-            myDB.vendor_list();
             ic = myDB.vendor_list();
             
-            int j = 0;
+            int j = 1;
             while (ic.MoveToNext())
             {
                 var a = ic.GetString(ic.GetColumnIndex("v_company_name"));
@@ -62,8 +61,7 @@ namespace App7
                 vendor.Add(a);
                 j++;
             }
-
-            myDB.vendor_list();
+            
             ic = myDB.category_list();
             myUnit1.Add("All Categories");
             int k = 0;
@@ -76,13 +74,36 @@ namespace App7
                 k++;
             }
 
+            purchase_button.Click += delegate
+            {
+                myDB.insertPurchase(ven_id, date.Text, total_amt);
+            };
+            listView.ItemClick += listView_ItemClick;
 
             date.Text = System.DateTime.Now.ToShortDateString();
-            myDB = new DBHelper(this);
-            myDB.product_list();
+            //myDB = new DBHelper(this);
+            showProductList();
+            
+            spinner_purchase1.Adapter = new ArrayAdapter
+              (this, Android.Resource.Layout.SimpleListItem1, vendor);
+
+            spinner_purchase1.ItemSelected += MyItemSelectedMethod2;
+
+            spinner_purchase2.Adapter = new ArrayAdapter
+             (this, Android.Resource.Layout.SimpleListItem1, myUnit1);
+
+            spinner_purchase2.ItemSelected += MyItemSelectedMethod3;
+            
+            sv = FindViewById<Android.Widget.SearchView>(Resource.Id.searchID_pro);
+            sv.QueryTextChange += Sv_QueryTextChange;
+        }
+
+        public void showProductList()
+        {
             ic = myDB.product_list();
 
             int i = 0;
+            myUsersList = new List<UserObject_purchase>();
             while (ic.MoveToNext())
             {
                 var a = ic.GetString(ic.GetColumnIndex("pro_name"));
@@ -92,32 +113,39 @@ namespace App7
                 myUsersList.Add(new UserObject_purchase(a, b));
                 i++;
             }
-            
-            spinner_purchase1.Adapter = new ArrayAdapter
-              (this, Android.Resource.Layout.SimpleListItem1, vendor);
-
-            spinner_purchase1.ItemSelected += MyItemSelectedMethod2;
-
-
-            spinner_purchase2.Adapter = new ArrayAdapter
-             (this, Android.Resource.Layout.SimpleListItem1, myUnit1);
-            
-            spinner_purchase2.ItemSelected += MyItemSelectedMethod3;
-            
             myCAdapter = new Purchase_CustomAdapter(this, myUsersList);
             listView.Adapter = myCAdapter;
-            listView.ItemClick += listView_ItemClick;
-            sv = FindViewById<Android.Widget.SearchView>(Resource.Id.searchID_pro);
-            sv.QueryTextChange += Sv_QueryTextChange;
         }
 
         private void MyItemSelectedMethod3(object sender, AdapterView.ItemSelectedEventArgs e)
         {
             var index = e.Position;
 
-            var value = vendor[index];
-            category_dict.TryGetValue(value, out cat);
-
+            var value = myUnit1[index];
+            if (value == "All Categories")
+            {
+                showProductList();
+                
+            }
+            else
+            {
+                category_dict.TryGetValue(value, out cat);
+                ic = myDB.product_list1(cat);
+                myUsersList = new List<UserObject_purchase>();
+                int i = 0;
+                while (ic.MoveToNext())
+                {
+                    var a = ic.GetString(ic.GetColumnIndex("pro_name"));
+                    var b = ic.GetInt(ic.GetColumnIndex("purchase_price"));
+                    Console.WriteLine(a);
+                    Console.WriteLine(b);
+                    
+                    myUsersList.Add(new UserObject_purchase(a, b));
+                    i++;
+                }
+                myCAdapter = new Purchase_CustomAdapter(this, myUsersList);
+                listView.Adapter = myCAdapter;
+            }
         }
 
         private void MyItemSelectedMethod2(object sender, AdapterView.ItemSelectedEventArgs e)
@@ -126,9 +154,9 @@ namespace App7
 
             var value = myUnit1[index];
             System.Console.WriteLine("value is " + value);
-
+            
             vendor_dict.TryGetValue(value, out ven_id);
-
+           
         }
 
         private void Sv_QueryTextChange(object sender, Android.Widget.SearchView.QueryTextChangeEventArgs e)
@@ -144,7 +172,6 @@ namespace App7
                 myObj = myUsersList[i];
                 if (myObj.name.ToLower().Contains(mySearchValue))
                 {
-                    System.Console.WriteLine("You did it");
                     mylist.Add(myUsersList[i]);
                 }
             }
@@ -156,11 +183,18 @@ namespace App7
         private void listView_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
         {
             var index = e.Position;
+            ind = index;
             System.Console.WriteLine(myUsersList[index]);
-
+            //EditText qty = FindViewById<EditText>(Resource.Id.p_qty);
+            //Console.WriteLine(myUsersList[index].);
+            ((EditText)index).TextChanged += getQty;
+            //Console.WriteLine(qt);
         }
 
+        private void getQty(object sender, TextChangedEventArgs e)
+        {
+            Console.WriteLine(((EditText)ind).Text);
+        }
     }
-
-
+    
 }

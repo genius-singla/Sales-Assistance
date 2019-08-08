@@ -24,7 +24,6 @@ namespace App7
         EditText ven_contact_no;
         Button ad_ven;
         DBHelper myDB;
-        ICursor ic;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
