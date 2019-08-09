@@ -194,7 +194,7 @@ namespace App7
             + unit + " Text, "
             + purchase_price + " int, "
             + selling_price + " int, "
-            + product_image + " image);";
+            + product_image + " int);";
 
 
 
@@ -254,7 +254,7 @@ namespace App7
 
 
         //Inserting New Product
-        public void InsertProduct(int cat_id, string product_name, string unit_val, int product_purchase_price, int product_sell_price, string product_image)
+        public void InsertProduct(int cat_id, string product_name, string unit_val, int product_purchase_price, int product_sell_price, int product_image)
         {
             String selectStm = "Select ifnull(max(" + product_id + "),0) as max_id from " + product_tablename;
             ICursor myresult = connectionObj.RawQuery(selectStm, null);
@@ -265,8 +265,8 @@ namespace App7
                 + product_name + "', '"
                 + unit_val+"', "
                 + product_purchase_price + ", "
-                + product_sell_price + ", '"
-                + product_image + "');";
+                + product_sell_price + ", "
+                + product_image + ");";
             connectionObj.ExecSQL(insertStatement);
             Console.WriteLine(insertStatement);
         }

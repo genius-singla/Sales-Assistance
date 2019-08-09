@@ -39,10 +39,10 @@ namespace App7
             while (ic.MoveToNext())
             {
                 var a = ic.GetString(ic.GetColumnIndex("pro_name"));
-                //var b = ic.GetInt(ic.GetColumnIndex("pro_img"));
+                int b = ic.GetInt(ic.GetColumnIndex("pro_image"));
                 Console.WriteLine(a);
                 //Console.WriteLine(a);
-                myProList.Add(new ProductObject(a));
+                myProList.Add(new ProductObject(a, b));
                 i++;
             }
             add_pro.Click += delegate

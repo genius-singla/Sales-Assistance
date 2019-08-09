@@ -19,10 +19,10 @@ namespace App7
         public int pro_img;
 
 
-        public ProductObject(string name)
+        public ProductObject(string name, int img)
         {
             pro_name = name;
-            //pro_img = img;
+            pro_img = img;
         }
     }
 }

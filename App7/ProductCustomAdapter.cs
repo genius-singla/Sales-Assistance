@@ -49,7 +49,7 @@ namespace App7
         }
         myView.FindViewById<TextView>(Resource.Id.product_name).Text = myObj.pro_name;
 
-        //myView.FindViewById<ImageView>(Resource.Id.mypro_pic).SetImageResource((myObj.pro_img));
+        myView.FindViewById<ImageView>(Resource.Id.mypro_pic).SetImageResource((myObj.pro_img));
         //myView.FindViewById<ImageView>(Resource.Id.mycat_pic).SetImageResource(Resource.Drawable.g);
         return myView;
     }

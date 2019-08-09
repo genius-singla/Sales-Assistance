@@ -20,6 +20,7 @@ namespace App7
     {
         Spinner spinner_category;
         Spinner spinner_unit;
+        Spinner pro_img;
         public static int PickImageId = 1001;
         //string[] myProduct = { "Action", "Kids", "Others" };
         List<string> myCategory = new List<string>();
@@ -37,7 +38,8 @@ namespace App7
         DBHelper myDB;
         int cat_id;
         string unit_val;
-        string img_path;
+        int img_path;
+        private static int[] cat_img_list = { Resource.Drawable.veg, Resource.Drawable.cat };
         protected override void OnCreate(Bundle savedInstanceState)
         {
 
@@ -45,6 +47,7 @@ namespace App7
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.product_activity);
             spinner_category = FindViewById<Spinner>(Resource.Id.pro_spinner);
+            pro_img = FindViewById<Spinner>(Resource.Id.spinner_pro);
             spinner_unit = FindViewById<Spinner>(Resource.Id.pro_unit);
             product_name = FindViewById<EditText>(Resource.Id.product_name);
             product_purchase_price = FindViewById<EditText>(Resource.Id.product_purchase);
@@ -53,7 +56,10 @@ namespace App7
             product_add = FindViewById<Button>(Resource.Id.product_btn);
             logo = FindViewById<ImageView>(Resource.Id.image_pro);
             text_pro_logo = FindViewById<TextView>(Resource.Id.product_logo);
+            pro_img.Adapter = new ArrayAdapter
+              (this, Android.Resource.Layout.SimpleListItem1, cat_img_list);
 
+            pro_img.ItemSelected += MyProImgSelectedMethod;
             product_add.Click += AddProduct;
             spinner_category.ItemSelected += MyItemSelectedMethod;
             spinner_unit.Adapter = new ArrayAdapter
@@ -73,12 +79,19 @@ namespace App7
                 myCategory.Add(a);
                 i++;
             }
-            product_image.Click += ImageOnClick;
+            //product_image.Click += ImageOnClick;
             spinner_category.Adapter = new ArrayAdapter
                 (this, Android.Resource.Layout.SimpleListItem1, myCategory);
         }
 
-        private void ImageOnClick(object sender, EventArgs e)
+        private void MyProImgSelectedMethod(object sender, AdapterView.ItemSelectedEventArgs e)
+        {
+            int index = e.Position;
+            img_path = cat_img_list[index];
+            product_image.SetImageResource(img_path);
+        }
+
+        /*private void ImageOnClick(object sender, EventArgs e)
         {
             Intent = new Intent();
             Intent.SetType("image/*");
@@ -93,7 +106,7 @@ namespace App7
                 product_image.SetImageURI(uri);
                 img_path = uri.ToString();
             }
-        }
+        }*/
 
         private void AddProduct(object sender, EventArgs e)
         {

@@ -338,10 +338,7 @@
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\drawable\category\" />
-    <Folder Include="Resources\drawable\product\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\veg.jpg" />
   </ItemGroup>
