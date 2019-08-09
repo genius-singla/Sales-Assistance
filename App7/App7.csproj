@@ -66,6 +66,7 @@
     <Compile Include="Changepassword.cs" />
     <Compile Include="Customer.cs" />
     <Compile Include="DBHelper.cs" />
+    <Compile Include="edit_category.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Order.cs" />
     <Compile Include="Orderlist_CustomAdapter.cs" />
@@ -329,6 +330,11 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Vieworder_main.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\edit_cat.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
