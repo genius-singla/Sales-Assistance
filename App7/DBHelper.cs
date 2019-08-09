@@ -49,9 +49,9 @@ namespace App7
 
 
         //Getting Category Detail
-        public ICursor getCategory(string id)
+        public ICursor getCategory(int id)
         {
-            String selectStm = "Select * from " + category + " where " + category_id + " = (Select min(" + category_id + ") from " + category +");";
+            String selectStm = "Select * from " + category + " where " + category_id + " = " + id +";";
             ICursor myresut = connectionObj.RawQuery(selectStm, null);
             return myresut;
         }

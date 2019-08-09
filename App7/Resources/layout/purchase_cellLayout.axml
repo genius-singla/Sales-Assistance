@@ -16,10 +16,10 @@
 	android:layout_height="wrap_content"
 	android:id="@+id/p_price"
 	android:layout_weight="0.3"/>
-	<EditText
+	<TextView
 	android:layout_width="wrap_content"
 	android:layout_height="wrap_content"
 	android:id="@+id/p_qty"
 	android:layout_weight="0.2"
-	android:text="0"/>
+	android:text="Tap"/>
 </LinearLayout>

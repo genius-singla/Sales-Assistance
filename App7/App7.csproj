@@ -67,6 +67,7 @@
     <Compile Include="Customer.cs" />
     <Compile Include="DBHelper.cs" />
     <Compile Include="edit_category.cs" />
+    <Compile Include="GlobalVariables.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Order.cs" />
     <Compile Include="Orderlist_CustomAdapter.cs" />

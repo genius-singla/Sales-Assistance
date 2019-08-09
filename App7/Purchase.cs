@@ -8,6 +8,7 @@ using Android.Database;
 using System;
 using Android.Support.V7.Widget;
 using Android.Text;
+using Android.Content;
 
 namespace App7
 {
@@ -22,12 +23,13 @@ namespace App7
         int total_amt = 0;
         Purchase_CustomAdapter searchAdapter;
         Android.Widget.SearchView sv;
-        
+        Android.App.AlertDialog.Builder alert;
         EditText date;
         Spinner spinner_purchase1;
         Spinner spinner_purchase2;
         ListView listView1;
         Button purchase_button;
+        EditText et;
         ImageView logo_pur;
         List<string> vendor = new List<string>();
 
@@ -49,6 +51,7 @@ namespace App7
             purchase_button = FindViewById<Button>(Resource.Id.purchase_btn);
             listView1 = FindViewById<ListView>(Resource.Id.listView1);
             date = FindViewById<EditText>(Resource.Id.edt_txt_date);
+            alert = new Android.App.AlertDialog.Builder(this);
             myDB = new DBHelper(this);
             ic = myDB.vendor_list();
             
@@ -185,15 +188,26 @@ namespace App7
             var index = e.Position;
             ind = index;
             System.Console.WriteLine(myUsersList[index]);
-            //EditText qty = FindViewById<EditText>(Resource.Id.p_qty);
-            //Console.WriteLine(myUsersList[index].);
-            ((EditText)index).TextChanged += getQty;
-            //Console.WriteLine(qt);
+            et = new EditText(this);
+            alert.SetTitle("Insert");
+            alert.SetMessage("Please Insert the Quantity");
+            alert.SetView(et);
+            alert.SetPositiveButton("OK", alertOKButton);
+
+            alert.SetNegativeButton("Cancel", alertCancelButton);
+            //Dialog myDialog = alert.Create();
+            Android.App.AlertDialog myDialog = alert.Create();
+            myDialog.Show();
         }
 
-        private void getQty(object sender, TextChangedEventArgs e)
+        private void alertCancelButton(object sender, DialogClickEventArgs e)
         {
-            Console.WriteLine(((EditText)ind).Text);
+            //throw new NotImplementedException();
+        }
+
+        private void alertOKButton(object sender, DialogClickEventArgs e)
+        {
+            var a = et.Text;
         }
     }
     

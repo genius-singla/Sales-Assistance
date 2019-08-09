@@ -21,7 +21,7 @@ namespace App7
         EditText editcat;
         EditText edit_id;
         Button update_btn;
-        string cid;
+        int cid;
         DBHelper myDB;
         ICursor ic;
         Spinner spinner_cat_img1;
@@ -39,7 +39,7 @@ namespace App7
                 editcat = FindViewById<EditText>(Resource.Id.catedit_id);
                 edit_id = FindViewById<EditText>(Resource.Id.category_name);
                 update_btn = FindViewById<Button>(Resource.Id.editcat_btn);
-                cid = Intent.GetStringExtra("cateditid");
+            cid = GlobalVariables.GetCategoryID();
             editcat.Enabled = false;
             spinner_cat_img1 = FindViewById<Spinner>(Resource.Id.spinner_cat1);
             //menu_gallery.Click += ButtonOnClick;
@@ -89,7 +89,7 @@ namespace App7
             myDB = new DBHelper(this);
             ic = myDB.getCategory(cid);
             ic.MoveToFirst();
-            editcat.Text = cid;
+            editcat.Text = cid.ToString();
             editcat.Text = ic.GetString(ic.GetColumnIndexOrThrow("cat_id"));
             edit_id.Text = ic.GetString(ic.GetColumnIndexOrThrow("cat_name"));
             //gallery.SetImageResource(Convert.ToInt32(ic.GetString(ic.GetColumnIndexOrThrow("cat_img"))));

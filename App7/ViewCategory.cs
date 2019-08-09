@@ -95,15 +95,20 @@ namespace App7
 
         public void alertEditButton(object sender, DialogClickEventArgs e)
         {
-            Intent newscreen = new Intent(this, typeof(edit_category));
-            newscreen.PutExtra("cateditid", id);
-            StartActivity(newscreen);
+            Intent ns = new Intent(this, typeof(edit_category));
+            
+            GlobalVariables.SetCategoryID(id);
+            StartActivity(ns);
         }
+
+        
 
         public void alertOKButton(object sender, DialogClickEventArgs e)
         {
             myDB.deleteCategoryItem(id);
-            show_category();
+            Intent ns = new Intent(this, typeof(ViewCategory));
+            StartActivity(ns);
+            //show_category();
         }
  
     }
