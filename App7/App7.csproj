@@ -67,6 +67,8 @@
     <Compile Include="Customer.cs" />
     <Compile Include="DBHelper.cs" />
     <Compile Include="edit_category.cs" />
+    <Compile Include="Favourite.cs" />
+    <Compile Include="Favourite_CustomAdapter.cs" />
     <Compile Include="GlobalVariables.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Order.cs" />
@@ -82,6 +84,7 @@
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="sales_person_dashboard.cs" />
+    <Compile Include="UserObject_favourite.cs" />
     <Compile Include="UserObject_Order.cs" />
     <Compile Include="UserObject_orderList.cs" />
     <Compile Include="UserObject_purchase.cs" />
@@ -339,9 +342,18 @@
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\veg.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\favourite_celllayout.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\favourite_mainactivity.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

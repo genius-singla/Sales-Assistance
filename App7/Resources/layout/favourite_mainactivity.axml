@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+	android:background="#fff">
+	<ImageView
+android:layout_height="50dp"
+android:layout_width="50dp"
+
+android:layout_margin="20dp"
+		android:layout_gravity="center"
+android:src="@drawable/sales"
+ />
+	<TextView
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_gravity="center"
+android:text="Favourite Vendors"
+android:fontFamily="Times New Roman"
+android:textStyle="bold"
+android:textSize="30dp"
+android:textColor="#FD9927"
+android:gravity="center"
+/>
+	<LinearLayout   
+    android:orientation="horizontal"
+    android:layout_width="wrap_content" 
+    android:layout_height="wrap_content"
+		android:weightSum="1">
+     <TextView
+            android:id="@+id/vendor_id_vendorList"
+            android:layout_width="match_parent" 
+            android:layout_height="75dp"
+            android:background="#ffffff"
+		android:textSize="20dp"
+		android:text="Vendor ID"
+		android:layout_weight=".25"
+			android:layout_marginLeft="40dp"
+			
+         /> 
+        <TextView
+            android:id="@+id/vendor_name_list"
+            android:layout_width="match_parent" 
+            android:layout_height="75dp"
+            android:background="#ffffff"
+		android:textSize="20dp"
+		android:text="Vendor Name"
+			android:layout_marginLeft="20dp"
+		android:layout_weight=".25"	
+	
+		/>   
+         <TextView
+            android:id="@+id/contact"
+            android:background="#ffffff"
+            android:layout_width="match_parent" 
+            android:layout_height="75dp"
+		android:text="Contact Name"
+		android:textSize="20dp"
+			android:layout_marginLeft="20dp"
+			android:layout_weight=".25"
+		
+         />   
+	
+		/>
+		</LinearLayout>
+	<LinearLayout 
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+		android:layout_marginTop="10dp"
+	android:background="#fff">
+	<ListView
+	android:layout_width="match_parent"
+	android:layout_height="500dp"
+			android:overScrollMode="always"
+	android:id="@+id/favourite_list"/>
+</LinearLayout>
+	
+</LinearLayout>
