@@ -41,6 +41,15 @@ namespace App7
             + purchase_amount + " int);";
 
 
+        //Getting Category Detail
+        internal ICursor getCategory(string id)
+        {
+            String selectStm = "Select * from " + category + " where " + category_id + "=" + id + ";";
+            ICursor myresut = connectionObj.RawQuery(selectStm, null);
+            return myresut;
+        }
+
+
         /*      ***Sales Person Table***      */
         public static string sales_person_tablename = "sales_person";
         public static string sales_person_id = "sales_person_id";
@@ -61,9 +70,11 @@ namespace App7
             + sales_person_address + " Text, "
             + sales_person_password + " Text);";
 
-        internal void deleteCategoryItem(string catname)
+
+        // Delete category
+        internal void deleteCategoryItem(int catid)
         {
-            string dltStm = "Delete from " + category + " where "+category_name+"='" + catname + "'";
+            string dltStm = "Delete from " + category + " where " + category_id + "=" + catid + ";";
             Console.WriteLine(dltStm);
             System.Console.WriteLine("My SQL  delete STM \n  \n" + dltStm);
             connectionObj.ExecSQL(dltStm);

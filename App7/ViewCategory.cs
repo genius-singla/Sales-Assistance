@@ -19,7 +19,7 @@ namespace App7
         DBHelper myDB;
         ListView listView;
         ICursor ic;
-        string name;
+        int id;
         ImageView add_cat;
         ImageView dlt_btn;
         CatCustomAdapter myCAdapter;
@@ -60,7 +60,8 @@ namespace App7
             {
                 var a = ic.GetString(ic.GetColumnIndex("cat_name"));
                 var b = ic.GetInt(ic.GetColumnIndex("cat_img"));
-                myCatList.Add(new CatObject(a, b));
+                var c = ic.GetInt(ic.GetColumnIndex("cat_id"));
+                myCatList.Add(new CatObject(a, b, c));
                 i++;
             }
 
@@ -71,14 +72,7 @@ namespace App7
             
         }
 
-        private void delete_item(object sender, AdapterView.ItemClickEventArgs e)
-        {
-            CatObject mycat;
-            var index = e.Position;
-            mycat = (myCatList[index]);
-            myDB.deleteCategoryItem(mycat.cat_name);
-        }
-
+        
         private void listView_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
         {
             CatObject mycat;
@@ -86,10 +80,10 @@ namespace App7
             mycat = myCatList[index];
             /*ImageView edt_btn = FindViewById<ImageView>(Resource.Id.cat_edit);
             ImageView dlt_btn = FindViewById<ImageView>(Resource.Id.cat_trash);*/
-            name = mycat.cat_name;
+            id = mycat.cat_id;
             alert.SetTitle("Edit/Delete");
             alert.SetMessage("Click on Delete or Edit");
-            alert.SetPositiveButton("Edit", alertOKButton);
+            alert.SetPositiveButton("Edit", alertEditButton);
 
             alert.SetNegativeButton("Delete", alertOKButton);
             //Dialog myDialog = alert.Create();
@@ -98,11 +92,18 @@ namespace App7
 
 
         }
-        public void alertOKButton(object sender, Android.Content.DialogClickEventArgs e)
+
+        public void alertEditButton(object sender, DialogClickEventArgs e)
         {
-            myDB.deleteCategoryItem(name);
+            Intent newscreen = new Intent(this, typeof(edit_category));
+            newscreen.PutExtra("cateditid", id);
+            StartActivity(newscreen);
+        }
+
+        public void alertOKButton(object sender, DialogClickEventArgs e)
+        {
+            myDB.deleteCategoryItem(id);
             show_category();
-            
         }
  
     }

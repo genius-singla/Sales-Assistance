@@ -16,11 +16,13 @@ namespace App7
     {
         public String cat_name;
         public int cat_img;
+        public int cat_id;
 
-        public CatObject(string name, int img)
+        public CatObject(string name, int img, int id)
         {
             cat_name = name;
             cat_img = img;
+            cat_id = id;
         }
     }
 }

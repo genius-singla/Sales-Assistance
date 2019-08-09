@@ -32,7 +32,7 @@ android:src="@drawable/sales2" />
     android:hint="ID"
     android:backgroundTint="#02BBD2"/>
 <EditText
-    android:id="@+id/category_edit_id"
+    android:id="@+id/category_name"
     android:layout_width="300dp"
     android:layout_height="wrap_content"
     android:textColor="#A9A9A9"

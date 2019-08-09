@@ -21,8 +21,6 @@ android:fontFamily="Times New Roman"
 android:textStyle="bold"
 android:textSize="30dp"
 android:textColor="#FD9927"
-
-
     />
 	
 	<EditText
@@ -32,7 +30,6 @@ android:textColor="#FD9927"
     android:layout_height="wrap_content"
     android:textColor="#A9A9A9"
     android:hint="Company Name"
-	android:inputType="textPassword"
     android:backgroundTint="#02BBD2"/>
 	<EditText
 android:id="@+id/customer_address"
