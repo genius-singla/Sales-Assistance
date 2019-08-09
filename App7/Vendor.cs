@@ -24,6 +24,8 @@ namespace App7
         EditText ven_contact_no;
         Button ad_ven;
         DBHelper myDB;
+        bool fav = false;
+        Android.App.AlertDialog.Builder alert;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -36,19 +38,44 @@ namespace App7
             ven_contact_nme = FindViewById<EditText>(Resource.Id.vendor_contact_name_id);
             ven_contact_no = FindViewById<EditText>(Resource.Id.vendor_contact_id);
             ad_ven = FindViewById<Button>(Resource.Id.vendor_btn);
-
+            alert = new Android.App.AlertDialog.Builder(this);
             ad_ven.Click += AddVendor;
         }
 
         private void AddVendor(object sender, EventArgs e)
         {
+            alert.SetTitle("Favourite");
+            alert.SetMessage("Do you want to save this Vendor as Favourite?");
+            alert.SetPositiveButton("Yes", alertOKButton);
+
+            alert.SetNegativeButton("Cancel", alertCancelButton);
+            //Dialog myDialog = alert.Create();
+            Android.App.AlertDialog myDialog = alert.Create();
+            myDialog.Show();
+            
+        }
+
+        public void insert()
+        {
             myDB = new DBHelper(this);
-            myDB.InsertVendor(cmpny_name.Text, ven_address.Text, 
-                ven_city.Text, ven_province.Text, ven_contact_nme.Text, ven_contact_no.Text);
+            myDB.InsertVendor(cmpny_name.Text, ven_address.Text,
+                ven_city.Text, ven_province.Text, ven_contact_nme.Text, ven_contact_no.Text, fav);
             string toast = string.Format("Vendor Added Successfully!");
             Toast.MakeText(this, toast, ToastLength.Long).Show();
             Intent newscreen = new Intent(this, typeof(Activity));
             StartActivity(newscreen);
+        }
+
+        private void alertCancelButton(object sender, DialogClickEventArgs e)
+        {
+            insert();
+            //throw new NotImplementedException();
+        }
+
+        private void alertOKButton(object sender, DialogClickEventArgs e)
+        {
+            fav = true;
+            insert();
         }
     }
 }

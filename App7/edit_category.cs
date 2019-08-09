@@ -35,9 +35,8 @@ namespace App7
                 editcat = FindViewById<EditText>(Resource.Id.catedit_id);
                 edit_id = FindViewById<EditText>(Resource.Id.category_name);
                 update_btn = FindViewById<Button>(Resource.Id.editcat_btn);
-            cid = Intent.GetStringExtra("cateditid");
-            showCategory();
-           
+                cid = Intent.GetStringExtra("cateditid");
+                showCategory();
             }
 
         private void showCategory()
@@ -46,8 +45,9 @@ namespace App7
             ic = myDB.getCategory(cid);
             ic.MoveToFirst();
             editcat.Text = cid;
+            editcat.Text = ic.GetString(ic.GetColumnIndexOrThrow("cat_id"));
             edit_id.Text = ic.GetString(ic.GetColumnIndexOrThrow("cat_name"));
-            gallery.SetImageResource(Convert.ToInt32(ic.GetString(ic.GetColumnIndexOrThrow("cat_img"))));
+            //gallery.SetImageResource(Convert.ToInt32(ic.GetString(ic.GetColumnIndexOrThrow("cat_img"))));
 
         }
     }

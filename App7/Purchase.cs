@@ -26,7 +26,7 @@ namespace App7
         EditText date;
         Spinner spinner_purchase1;
         Spinner spinner_purchase2;
-        ListView listView;
+        ListView listView1;
         Button purchase_button;
         ImageView logo_pur;
         List<string> vendor = new List<string>();
@@ -47,7 +47,7 @@ namespace App7
             spinner_purchase2 = FindViewById<Spinner>(Resource.Id.spinner_pur2);
             logo_pur = FindViewById<ImageView>(Resource.Id.image_logo_pur);
             purchase_button = FindViewById<Button>(Resource.Id.purchase_btn);
-            listView = FindViewById<ListView>(Resource.Id.listView1);
+            listView1 = FindViewById<ListView>(Resource.Id.listView1);
             date = FindViewById<EditText>(Resource.Id.edt_txt_date);
             myDB = new DBHelper(this);
             ic = myDB.vendor_list();
@@ -78,7 +78,7 @@ namespace App7
             {
                 myDB.insertPurchase(ven_id, date.Text, total_amt);
             };
-            listView.ItemClick += listView_ItemClick;
+            listView1.ItemClick += listView_ItemClick1;
 
             date.Text = System.DateTime.Now.ToShortDateString();
             //myDB = new DBHelper(this);
@@ -114,7 +114,7 @@ namespace App7
                 i++;
             }
             myCAdapter = new Purchase_CustomAdapter(this, myUsersList);
-            listView.Adapter = myCAdapter;
+            listView1.Adapter = myCAdapter;
         }
 
         private void MyItemSelectedMethod3(object sender, AdapterView.ItemSelectedEventArgs e)
@@ -144,7 +144,7 @@ namespace App7
                     i++;
                 }
                 myCAdapter = new Purchase_CustomAdapter(this, myUsersList);
-                listView.Adapter = myCAdapter;
+                listView1.Adapter = myCAdapter;
             }
         }
 
@@ -177,10 +177,10 @@ namespace App7
             }
 
             searchAdapter = new Purchase_CustomAdapter(this, mylist);
-            listView.Adapter = searchAdapter;
+            listView1.Adapter = searchAdapter;
         }
 
-        private void listView_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
+        private void listView_ItemClick1(object sender, AdapterView.ItemClickEventArgs e)
         {
             var index = e.Position;
             ind = index;

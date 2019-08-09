@@ -21,6 +21,13 @@ namespace App7
 
         public static string DBName = "myDatabse.db";
 
+        /*      ***Favourite Table***       */
+        public static string favourite_tablename = "fav";
+        public static string fav_vendor_id = "ven_id";
+        //create database
+        public string fav_creatTable = "Create Table " + favourite_tablename + "(" + fav_vendor_id + " int);";
+
+
         /*      ***Admin Table***       */
         public static string admin_tablename = "admin_login";
         public static string admin_name = "adm_name";
@@ -42,9 +49,9 @@ namespace App7
 
 
         //Getting Category Detail
-        internal ICursor getCategory(string id)
+        public ICursor getCategory(string id)
         {
-            String selectStm = "Select * from " + category + " where " + category_id + "=" + id + ";";
+            String selectStm = "Select * from " + category + " where " + category_id + " = 1;";
             ICursor myresut = connectionObj.RawQuery(selectStm, null);
             return myresut;
         }
@@ -119,15 +126,26 @@ namespace App7
         }
 
         //      Inserting New Vendor
-        public void InsertVendor(string c_name, string v_address, string v_city, string v_province, string v_contact_name, string v_contact_number)
+        public void InsertVendor(string c_name, string v_address, string v_city, string v_province, string v_contact_name, string v_contact_number, bool fav)
         {
             String selectStm = "Select ifnull(max(" + vendor_id + "),0) as max_id from " + vendor_tablename;
             ICursor myresult = connectionObj.RawQuery(selectStm, null);
             myresult.MoveToFirst();
             var id = myresult.GetInt(myresult.GetColumnIndexOrThrow("max_id"));
-
+            if(fav==true)
+            {
+                InsertFavVendor(id);
+            }
             string insertStatement = "Insert into " + vendor_tablename + " values(" + (id + 1) + ", '" + c_name + "', '"
                 + v_address + "', '" + v_city + "', '" + v_province + "', '" + v_contact_name + "', '" + v_contact_number + "');";
+            connectionObj.ExecSQL(insertStatement);
+            Console.WriteLine(insertStatement);
+        }
+
+        //Creating Favourite Vendor
+        public void InsertFavVendor(int id)
+        {
+            string insertStatement = "Insert into " + favourite_tablename + " values(" + id + ");";
             connectionObj.ExecSQL(insertStatement);
             Console.WriteLine(insertStatement);
         }
@@ -338,6 +356,7 @@ namespace App7
             db.ExecSQL(vendor_creatTable);
             db.ExecSQL(purchase_creatTable);
             db.ExecSQL(customer_creatTable);
+            db.ExecSQL(fav_creatTable);
             //insertAdmin("admin","abc");
             string insertStm = "Insert into " + admin_tablename + " values('admin', 'abc');";
             Console.WriteLine(insertStm);
