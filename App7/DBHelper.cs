@@ -51,7 +51,7 @@ namespace App7
         //Getting Category Detail
         public ICursor getCategory(string id)
         {
-            String selectStm = "Select * from " + category + " where " + category_id + " = 1;";
+            String selectStm = "Select * from " + category + " where " + category_id + " = (Select min(" + category_id + ") from " + category +");";
             ICursor myresut = connectionObj.RawQuery(selectStm, null);
             return myresut;
         }
@@ -66,6 +66,16 @@ namespace App7
         public static string sales_person_contact = "sp_contact";
         public static string sales_person_address = "sp_address";
         public static string sales_person_password = "sp_password";
+
+
+        //update category
+        public void updateCategory(string id, string name, int img_path)
+        {
+            String updateStm = "update " + category + " set " + category_name + " = '"
+                + name + "', " + category_image + " = " + img_path + " where " + category_id + " = " + id + ";";
+            connectionObj.ExecSQL(updateStm);
+            Console.WriteLine(updateStm);
+        }
 
         /*      Create table for sales person       */
         public string sales_person_creatTable = "Create Table " + sales_person_tablename + "(" 
@@ -200,7 +210,7 @@ namespace App7
         public string category_creatTable = "Create Table " + category + "("
             + category_id + " int, "
             + category_name + " Text, "
-            + category_image + " image);";
+            + category_image + " int);";
 
 
         /*      ***Vendor Table***      */
@@ -228,15 +238,15 @@ namespace App7
 
 
         // Inserting new Category
-        public void insertCategory(string cat, string img_path)
+        public void insertCategory(string cat, int img_path)
         {
             String selectStm = "Select ifnull(max(" + category_id + "),0) as max_id from " + category;
             ICursor myresult = connectionObj.RawQuery(selectStm, null);
             myresult.MoveToFirst();
             var id = myresult.GetInt(myresult.GetColumnIndexOrThrow("max_id"));
 
-            string insertStatement = "Insert into " + category + " values(" + (id + 1) + ", '" + cat + "', '"
-                + img_path + "');";
+            string insertStatement = "Insert into " + category + " values(" + (id + 1) + ", '" + cat + "', "
+                + img_path + ");";
             connectionObj.ExecSQL(insertStatement);
             Console.WriteLine(insertStatement);
 

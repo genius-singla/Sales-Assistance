@@ -23,7 +23,10 @@ namespace App7
         TextView category_txt;
         ImageView menu_gallery;
         Button cate_btn;
-        string img_path;
+        Spinner spinner_cat_img;
+        int img_path;
+        private static int[] cat_img_list = {Resource.Drawable.veg, Resource.Drawable.cat};
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -34,12 +37,15 @@ namespace App7
             category_txt = FindViewById<TextView>(Resource.Id.category_text_id);
             menu_gallery = FindViewById<ImageView>(Resource.Id.category_img_view);
             cate_btn = FindViewById<Button>(Resource.Id.category_btn);
+            spinner_cat_img = FindViewById<Spinner>(Resource.Id.spinner_cat);
+            //menu_gallery.Click += ButtonOnClick;
+            spinner_cat_img.Adapter = new ArrayAdapter
+              (this, Android.Resource.Layout.SimpleListItem1, cat_img_list);
 
-            menu_gallery.Click += ButtonOnClick;
-
+            spinner_cat_img.ItemSelected += MyImgSelectedMethod;
             cate_btn.Click += delegate
             {
-                if(img_path == null || img_path == "")
+                if(img_path == null)
                 {
                     Snackbar snackBar = Snackbar.Make(cate_btn, "Please Choose Image first...", Snackbar.LengthIndefinite);
                     //Show the snackbar
@@ -57,7 +63,7 @@ namespace App7
                 {
                     myDB = new DBHelper(this);
                     myDB.insertCategory(enter_category.Text, img_path);
-                    string toast = string.Format("Product Added Successfully!");
+                    string toast = string.Format("Category Added Successfully!");
                     Toast.MakeText(this, toast, ToastLength.Long).Show();
                     Intent newscreen = new Intent(this, typeof(ViewCategory));
                     StartActivity(newscreen);
@@ -66,8 +72,15 @@ namespace App7
             };
         }
 
+        private void MyImgSelectedMethod(object sender, AdapterView.ItemSelectedEventArgs e)
+        {
+            int index = e.Position;
+            img_path = cat_img_list[index];
+            menu_gallery.SetImageResource(img_path);
+        }
 
-        private void ButtonOnClick(object sender, EventArgs e)
+
+        /*private void ButtonOnClick(object sender, EventArgs e)
         {
             Intent = new Intent();
             Intent.SetType("image/*");
@@ -83,6 +96,6 @@ namespace App7
                 menu_gallery.SetImageURI(uri);
                 img_path = uri.ToString();
             }
-        }
+        }*/
     }
 }
