@@ -48,7 +48,7 @@ namespace App7
             {
                 myView = myContext.LayoutInflater.Inflate(Resource.Layout.favourite_celllayout, null);
             }
-            myView.FindViewById<TextView>(Resource.Id.vendor_id_favourite_cell).Text = myObj.vendor_id;
+            myView.FindViewById<TextView>(Resource.Id.vendor_id_favourite_cell).Text = (myObj.vendor_id).ToString();
             myView.FindViewById<TextView>(Resource.Id.vendor_name_list_cell).Text = myObj.vendor_nm;
             myView.FindViewById<TextView>(Resource.Id.contact_FavouriteList_cell).Text = myObj.vendor_contact;
 

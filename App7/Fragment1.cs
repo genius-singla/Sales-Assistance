@@ -70,10 +70,10 @@ namespace App7
         {
 
             //rsname = new List<string>();
-            
+            myDB = new DBHelper(this.Context);
             int index = e.Position;
             var value = rsname[index];
-            myDB.updateOrderStatus(Convert.ToInt32(value));
+            myDB.updateOrderStatus(value);
         }
     }
     public class Fragment2 : Android.Support.V4.App.Fragment
@@ -110,8 +110,8 @@ namespace App7
         {
 
             DBHelper myDB = new DBHelper(this.Context);
-            myDB.pendingOrder();
-            i = myDB.pendingOrder();
+            myDB.completeOrder();
+            i = myDB.completeOrder();
             while (i.MoveToNext())
             {
                 string a = i.GetString(i.GetColumnIndexOrThrow("order_id"));

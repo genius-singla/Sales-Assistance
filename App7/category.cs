@@ -25,7 +25,7 @@ namespace App7
         Button cate_btn;
         Spinner spinner_cat_img;
         int img_path;
-        private static int[] cat_img_list = {Resource.Drawable.veg, Resource.Drawable.cat};
+        private static int[] cat_img_list = {Resource.Drawable.c1, Resource.Drawable.c2, Resource.Drawable.c3, Resource.Drawable.c4 };
 
         protected override void OnCreate(Bundle savedInstanceState)
         {

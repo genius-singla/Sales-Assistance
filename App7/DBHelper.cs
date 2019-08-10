@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
 using Android.App;
 using Android.Content;
 using Android.OS;
@@ -24,8 +23,12 @@ namespace App7
         /*      ***Favourite Table***       */
         public static string favourite_tablename = "fav";
         public static string fav_vendor_id = "ven_id";
+        public static string fav_vendor_name = "v_company_name";
+        public static string fav_vendor_contact = "v_contact_number";
         //create database
-        public string fav_creatTable = "Create Table " + favourite_tablename + "(" + fav_vendor_id + " int);";
+        public string fav_creatTable = "Create Table " + favourite_tablename + "(" + fav_vendor_id + " int," 
+            + fav_vendor_name + " Text, "
+            + fav_vendor_contact + " Text);";
 
 
         /*      ***Admin Table***       */
@@ -35,19 +38,27 @@ namespace App7
         //create database
         public string admin_creatTable = "Create Table " + admin_tablename + "(" + admin_name + " Text, " + admin_password + " Text);";
 
+
+        //View Purchase
+        public ICursor view_purchase()
+        {
+            String selectStm = "Select * from " + purchase_tablename;
+            ICursor myresut = connectionObj.RawQuery(selectStm, null);
+            return myresut;
+        }
+
         /*      ***Purchase Table***       */
         public static string purchase_tablename = "purchase";
 
         // Favourite List
         public ICursor favList()
         {
-            String selectStm = "Select * from " + favourite_tablename + " where " + favourite_tablename + "."+ fav_vendor_id + " = "+vendor_tablename+"."+vendor_id;
+           String selectStm = "Select * from fav;";
             ICursor myresult = connectionObj.RawQuery(selectStm, null);
             return myresult;
         }
 
-        public static string purchase_id = "pur_id";
-
+        
         public ICursor pendingOrder()
         {
             String selectStm = "Select * from " + order_tablename + " where " + order_status + " = 'pending'";
@@ -61,7 +72,7 @@ namespace App7
             ICursor myresult = connectionObj.RawQuery(selectStm, null);
             return myresult;
         }
-
+        public static string purchase_id = "pur_id";
         public static string ven_id = "vendor_id";
         public static string purchase_date = "pur_date";
         public static string purchase_amount = "pur_amt";
@@ -83,7 +94,7 @@ namespace App7
             + order_amount + " int, " 
             +order_status + " Text);";
 
-        public void updateOrderStatus(int o_id)
+        public void updateOrderStatus(string o_id)
         {
             String updateStm = "update " + order_tablename + " set " + order_status + " = 'complete' where " + order_id + " = " + o_id + ";";
             connectionObj.ExecSQL(updateStm);
@@ -195,7 +206,7 @@ namespace App7
             var id = myresult.GetInt(myresult.GetColumnIndexOrThrow("max_id"));
             if(fav==true)
             {
-                InsertFavVendor(id);
+                InsertFavVendor(id, c_name, v_contact_number);
             }
             string insertStatement = "Insert into " + vendor_tablename + " values(" + (id + 1) + ", '" + c_name + "', '"
                 + v_address + "', '" + v_city + "', '" + v_province + "', '" + v_contact_name + "', '" + v_contact_number + "');";
@@ -204,9 +215,9 @@ namespace App7
         }
 
         //Creating Favourite Vendor
-        public void InsertFavVendor(int id)
+        public void InsertFavVendor(int id, string name, string contact)
         {
-            string insertStatement = "Insert into " + favourite_tablename + " values(" + id + ");";
+            string insertStatement = "Insert into " + favourite_tablename + " values(" + (id+1) + ", '" + name + "', '" + contact + "');";
             connectionObj.ExecSQL(insertStatement);
             Console.WriteLine(insertStatement);
         }

@@ -6,14 +6,14 @@
       android:orderInCategory="0"
       android:id="@+id/menu_genres"
       android:enabled="true"
-      android:title="Complete Order"
+      android:title="Pending Order"
       app:showAsAction="always" />
 
   <item
       android:orderInCategory="1"
       android:id="@+id/menu_titles"
       android:enabled="true"
-      android:title="Pending Orders"
+      android:title="Complete Orders"
       app:showAsAction="always" />
 
 

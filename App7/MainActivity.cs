@@ -49,6 +49,7 @@ namespace App7
             }
             else
             {
+                login_username.Error = "Invalid Email";
                 login_button.Enabled = false;
             }
         }
@@ -86,26 +87,38 @@ namespace App7
             {
                 cursor = myDB.SelectSalesPersonData(login_username.Text);
                 cursor.MoveToFirst();
-                var un = cursor.GetString(cursor.GetColumnIndexOrThrow("sp_email"));
-                var pswd = cursor.GetString(cursor.GetColumnIndexOrThrow("sp_password"));
-                var fname = cursor.GetString(cursor.GetColumnIndexOrThrow("first_name"));
-                var lname = cursor.GetString(cursor.GetColumnIndexOrThrow("last_name"));
-                if (login_username.Text == un && login_passowrd.Text == pswd)
-                {
-                    System.Console.WriteLine("Successfully logged in!!");
-                    Intent newscreen = new Intent(this, typeof(sales_person_dashboard));
-                    newscreen.PutExtra("email", login_username.Text);
-                    newscreen.PutExtra("salesPersonName", fname + " " + lname);
-                    StartActivity(newscreen);
-                }
-                else
+                if(cursor==null)
                 {
                     alert.SetTitle("Error!");
-                    alert.SetMessage("Wrong Username or Password...");
+                    alert.SetMessage("This email id is not registered..");
                     alert.SetPositiveButton("Ok", alertOKButton);
                     Android.App.AlertDialog myDialog = alert.Create();
                     myDialog.Show();
                 }
+                else
+                {
+                    var un = cursor.GetString(cursor.GetColumnIndexOrThrow("sp_email"));
+                    var pswd = cursor.GetString(cursor.GetColumnIndexOrThrow("sp_password"));
+                    var fname = cursor.GetString(cursor.GetColumnIndexOrThrow("first_name"));
+                    var lname = cursor.GetString(cursor.GetColumnIndexOrThrow("last_name"));
+                    if (login_username.Text == un && login_passowrd.Text == pswd)
+                    {
+                        System.Console.WriteLine("Successfully logged in!!");
+                        Intent newscreen = new Intent(this, typeof(sales_person_dashboard));
+                        newscreen.PutExtra("email", login_username.Text);
+                        newscreen.PutExtra("salesPersonName", fname + " " + lname);
+                        StartActivity(newscreen);
+                    }
+                    else
+                    {
+                        alert.SetTitle("Error!");
+                        alert.SetMessage("Wrong Username or Password...");
+                        alert.SetPositiveButton("Ok", alertOKButton);
+                        Android.App.AlertDialog myDialog = alert.Create();
+                        myDialog.Show();
+                    }
+                }
+                
             }
         }
     }

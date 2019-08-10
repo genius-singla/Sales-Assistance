@@ -26,7 +26,7 @@ namespace App7
         List<string> myCategory = new List<string>();
         //List<KeyValuePair<string, int>> category = new List<KeyValuePair<string, int>>();
         Dictionary<string, int> dist = new Dictionary<string, int>();
-        string[] myUnit = { "Kg", "lb" };
+        string[] myUnit = { "Kg", "lb", "Pc" };
         EditText product_name;
         ImageView logo;
         TextView text_pro_logo;
@@ -39,7 +39,9 @@ namespace App7
         int cat_id;
         string unit_val;
         int img_path;
-        private static int[] cat_img_list = { Resource.Drawable.veg, Resource.Drawable.cat };
+        private static int[] cat_img_list = { Resource.Drawable.p3, Resource.Drawable.p4, Resource.Drawable.p5, Resource.Drawable.p6, Resource.Drawable.p7,
+            Resource.Drawable.p8, Resource.Drawable.p9, Resource.Drawable.p10, Resource.Drawable.p11, Resource.Drawable.p12, Resource.Drawable.p13, Resource.Drawable.p14
+        , Resource.Drawable.p15, Resource.Drawable.p16, Resource.Drawable.p17, Resource.Drawable.p18, Resource.Drawable.p19};
         protected override void OnCreate(Bundle savedInstanceState)
         {
 

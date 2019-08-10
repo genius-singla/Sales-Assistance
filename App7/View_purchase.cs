@@ -22,6 +22,7 @@ namespace App7
         TextView totalam;
         TextView date;
         ImageView add;
+        DBHelper myDB;
 
         PurchaseList_CustomAdapter myPAdapter;
         List<UserObject_purchaseList> purchaseList = new List<UserObject_purchaseList>();
@@ -36,20 +37,22 @@ namespace App7
             totalam = FindViewById<TextView>(Resource.Id.totalAmount_purList);
             date = FindViewById<TextView>(Resource.Id.date_purList);
             add = FindViewById<ImageView>(Resource.Id.img_id_pur);
-            // myDB = new DBHelper(this);
-            // myDB.category_list();
+            myDB = new DBHelper(this);
+            ic =myDB.view_purchase();
             //ic = myDB.category_list();
             //myArray = new string[ic.Count];
-            /* int i = 0;
+            /* int i = 0;*/
              while (ic.MoveToNext())
              {
-                 var a = ic.GetString(ic.GetColumnIndex("cat_name"));
-                 var b = ic.GetInt(ic.GetColumnIndex("cat_img"));
-                 Console.WriteLine(a);
+                 var a = ic.GetString(ic.GetColumnIndex("pur_id"));
+                 var b = ic.GetString(ic.GetColumnIndex("vendor_id"));
+                 var c = ic.GetString(ic.GetColumnIndex("pur_amt"));
+                 var d = ic.GetString(ic.GetColumnIndex("pur_date"));
+                Console.WriteLine(a);
                  Console.WriteLine(b);
-                 purchaseList.Add(new UserObject_PurchaseList(a, b));
-                 i++;
-             }*/
+                 purchaseList.Add(new UserObject_purchaseList(a, b, c, d));
+                 //i++;
+             }
 
             listView = FindViewById<ListView>(Resource.Id.purchase_list);
             //myAdapter = new ArrayAdapter(this, Android.Resource.Layout.SimpleListItem1, myUsersList);

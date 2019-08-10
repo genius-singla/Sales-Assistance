@@ -15,6 +15,7 @@ using Android.App;
 using Android.Content;
 
 using Android.Widget;
+using Android.Text;
 
 namespace App7
 {
@@ -28,7 +29,7 @@ namespace App7
         EditText addrs;
         EditText temppwd;
         Button registration;
-
+        Android.App.AlertDialog.Builder alert;
         DBHelper myDB;
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -57,17 +58,57 @@ namespace App7
             addrs = FindViewById<EditText>(Resource.Id.address);
             temppwd = FindViewById<EditText>(Resource.Id.temporarypwd);
             registration = FindViewById<Button>(Resource.Id.register);
-
+            alert = new Android.App.AlertDialog.Builder(this);
             myDB = new DBHelper(this);
+
+            e_mail.TextChanged += textChanged;
 
             registration.Click += delegate
               {
-                  myDB.insertSalesPerson(first_name.Text, last_name.Text, e_mail.Text, c_num.Text, addrs.Text, temppwd.Text);
+                  
+
+                      if (first_name.Text == "" || last_name.Text == "" || e_mail.Text == "" || addrs.Text == "" || temppwd.Text == "")
+                      {
+                          alert.SetTitle("Error!");
+                          alert.SetMessage("All fields are mandatory...");
+                          alert.SetPositiveButton("Ok", alertOKButton);
+                          Android.App.AlertDialog myDialog = alert.Create();
+                          myDialog.Show();
+                      }
+                      else
+                      {
+                          myDB.insertSalesPerson(first_name.Text, last_name.Text, e_mail.Text, c_num.Text, addrs.Text, temppwd.Text);
+                          string toast = string.Format("Sales Person Added Successfully!");
+                          Toast.MakeText(this, toast, ToastLength.Long).Show();
+                          Intent newscreen = new Intent(this, typeof(Activity));
+                          StartActivity(newscreen);
+                      }
+                  
+                  
+
               };
         }
 
+        private void textChanged(object sender, TextChangedEventArgs e)
+        {
+        if (e_mail.Text.Contains("@") && e_mail.Text.Contains("."))
+        {
+                registration.Enabled = true;
+        }
+        else
+        {
+                e_mail.Error = "Invalid Email";
+                registration.Enabled = false;
+            }
 
-             public override bool OnCreateOptionsMenu(IMenu menu)
+        }
+
+        private void alertOKButton(object sender, DialogClickEventArgs e)
+        {
+            //throw new NotImplementedException();
+        }
+
+        public override bool OnCreateOptionsMenu(IMenu menu)
         {
             MenuInflater.Inflate(Resource.Menu.menu_main, menu);
             return true;

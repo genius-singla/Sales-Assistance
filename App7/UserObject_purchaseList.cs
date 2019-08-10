@@ -18,9 +18,9 @@ namespace App7
         public String vendor_nm;
         public String totalamount;
         public String date;
-        public UserObject_purchaseList(string order, string vendor, string total, string date_list)
+        public UserObject_purchaseList(string id, string vendor, string total, string date_list)
         {
-            order_id = order;
+            order_id = id;
             vendor_nm = vendor;
             totalamount = total;
             date = date_list;

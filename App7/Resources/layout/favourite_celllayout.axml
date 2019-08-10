@@ -10,6 +10,9 @@
             android:layout_width="30dp" 
             android:layout_height="75dp"
             android:background="#ffffff"
+		android:layout_weight=".25"
+			android:layout_marginLeft="40dp"
+	
 		
          /> 
         <TextView
@@ -17,14 +20,16 @@
             android:layout_width="150dp" 
             android:layout_height="75dp"
             android:background="#ffffff"
-	
+	android:layout_marginLeft="80dp"
+		android:layout_weight=".25"	
 		/>   
          <TextView
             android:id="@+id/contact_FavouriteList_cell"
             android:background="#ffffff"
             android:layout_width="150dp" 
             android:layout_height="75dp"
-		
+		android:layout_marginLeft="30dp"
+			android:layout_weight=".25"
 			
 		
          />   

@@ -83,26 +83,7 @@
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:weightSum="0.9">
-		<LinearLayout
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:orientation="vertical"
-			android:layout_weight=".3"
-			android:layout_gravity="right"
-			android:paddingLeft="10dp"
-			android:layout_marginLeft="15dp"
-			android:paddingRight="20dp">
-				<ImageView
-				android:layout_width="100dp"
-				android:layout_height="100dp"
-				android:src="@drawable/c"
-				android:id="@+id/customer_img1"/>
-				<TextView
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:text="View Customer"
-				android:lines="2"/>
-		</LinearLayout>
+		
 		<LinearLayout
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
