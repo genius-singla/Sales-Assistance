@@ -69,6 +69,7 @@
     <Compile Include="edit_category.cs" />
     <Compile Include="Favourite.cs" />
     <Compile Include="Favourite_CustomAdapter.cs" />
+    <Compile Include="Fragment1.cs" />
     <Compile Include="GlobalVariables.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Order.cs" />
@@ -91,9 +92,11 @@
     <Compile Include="UserObject_purchaseList.cs" />
     <Compile Include="Vendor.cs" />
     <Compile Include="ViewCategory.cs" />
+    <Compile Include="ViewPagerAdapter.cs" />
     <Compile Include="ViewProduct.cs" />
     <Compile Include="View_order.cs" />
     <Compile Include="View_purchase.cs" />
+    <Compile Include="WelcomeScreen.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -127,6 +130,9 @@
     <PackageReference Include="Xamarin.Android.Support.Design" Version="28.0.0.1" />
     <PackageReference Include="Xamarin.Android.Support.Core.Utils" Version="28.0.0.1" />
     <PackageReference Include="Xamarin.Android.Support.CustomTabs" Version="28.0.0.1" />
+    <PackageReference Include="Xamarin.Android.Support.v7.AppCompat">
+      <Version>28.0.0.1</Version>
+    </PackageReference>
     <PackageReference Include="Xamarin.Essentials" Version="1.1.0" />
   </ItemGroup>
   <ItemGroup>
@@ -352,6 +358,27 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\favourite_mainactivity.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\FFragmentLayout.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\SFragmentLayout.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\menu\bottom_navigation_main.xml">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\WelcomeScreen.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

@@ -77,7 +77,8 @@ namespace App7
             chg_pswd_layout.Click += delegate
             {
                 //Console.WriteLine("Welcome to Registration Page");
-                Intent newscreen = new Intent(this, typeof(Changepassword));
+                // Intent newscreen = new Intent(this, typeof(Changepassword));
+                Intent newscreen = new Intent(this, typeof(WelcomeScreen));
                 newscreen.PutExtra("userName", "admin");
                 StartActivity(newscreen);
             };
