@@ -46,10 +46,10 @@ namespace App7
             {
                 myView = mycontext.LayoutInflater.Inflate(Resource.Layout.order_cellLayout, null);
             }
-            myView.FindViewById<TextView>(Resource.Id.order_product_name).Text = myObj.name;
-            myView.FindViewById<TextView>(Resource.Id.pro_price).Text = myObj.pr;
+            myView.FindViewById<TextView>(Resource.Id.o_pro_name).Text = myObj.name;
+            myView.FindViewById<TextView>(Resource.Id.o_price).Text = (myObj.pr).ToString();
 
-            myView.FindViewById<TextView>(Resource.Id.pro_qty).Text = (myObj.qt).ToString();
+            //myView.FindViewById<TextView>(Resource.Id.o_qty).Text = (myObj.or_id).ToString();
             return myView;
         }
     }

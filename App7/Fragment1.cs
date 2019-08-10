@@ -46,13 +46,12 @@ namespace App7
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
-
             DBHelper myDB = new DBHelper(this.Context);
-            myDB.vendor();
-            i = myDB.vendor();
+            //myDB.pendingOrder();
+            i = myDB.pendingOrder();
             while (i.MoveToNext())
             {
-                string a = i.GetString(i.GetColumnIndexOrThrow("v_contact_person"));
+                string a = i.GetString(i.GetColumnIndexOrThrow("order_id"));
                 Console.WriteLine(a);
                 rsname.Add(a);
             }
@@ -61,9 +60,20 @@ namespace App7
            // myView.FindViewById<TextView>(Resource.Id.myNameIdl).Text = myName;
 
             myList.Adapter = new ArrayAdapter(this.Activity, Android.Resource.Layout.SimpleListItem1, rsname);
+
+            myList.ItemClick += OnItemClick;
             return myView;
+            
+        }
 
+        private void OnItemClick(object sender, AdapterView.ItemClickEventArgs e)
+        {
 
+            //rsname = new List<string>();
+            
+            int index = e.Position;
+            var value = rsname[index];
+            myDB.updateOrderStatus(Convert.ToInt32(value));
         }
     }
     public class Fragment2 : Android.Support.V4.App.Fragment
@@ -100,11 +110,11 @@ namespace App7
         {
 
             DBHelper myDB = new DBHelper(this.Context);
-            myDB.vendor();
-            i = myDB.vendor();
+            myDB.pendingOrder();
+            i = myDB.pendingOrder();
             while (i.MoveToNext())
             {
-                string a = i.GetString(i.GetColumnIndexOrThrow("v_company_name"));
+                string a = i.GetString(i.GetColumnIndexOrThrow("order_id"));
                 Console.WriteLine(a);
                 rsname.Add(a);
             }

@@ -30,6 +30,7 @@
 			android:paddingLeft="20dp"
 			android:paddingRight="10dp"
 			android:clickable="true"
+			android:id="@+id/fav_vendor"
 	>	
 		<ImageView
 		android:layout_height="100dp"
@@ -41,7 +42,7 @@
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:id="@+id/text"
-		android:text="Sales"
+		android:text="Favourite Vendor"
 				android:lines="2"
 	   android:gravity="center"
 		

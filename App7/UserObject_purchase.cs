@@ -17,11 +17,13 @@ namespace App7
 
         public String name;
         public int pr;
+        public int p_id;
 
-        public UserObject_purchase(string product_name, int price)
+        public UserObject_purchase(string product_name, int price, int id)
         {
             name = product_name;
             pr = price;
+            p_id = id;
         }
     }
 }

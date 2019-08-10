@@ -20,7 +20,7 @@ namespace App7
         RadioButton login_admin;
         RadioButton login_sales_person;
         Button login_button;
-
+        Android.App.AlertDialog.Builder alert;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -31,6 +31,7 @@ namespace App7
             login_admin = FindViewById<RadioButton>(Resource.Id.login_radio_admin);
             login_sales_person = FindViewById<RadioButton>(Resource.Id.login_radio_sales_person);
             login_button = FindViewById<Button>(Resource.Id.login_btn);
+            alert = new Android.App.AlertDialog.Builder(this);
             myDB = new DBHelper(this);
             login_button.Click += delegate {
                 login();
@@ -44,12 +45,18 @@ namespace App7
         {
             if((login_username.Text.Contains("@") && login_username.Text.Contains(".")) || login_username.Text=="admin")
             {
-                Console.WriteLine("Valid Email");
+                login_button.Enabled = true;
             }
             else
             {
-                login_username.Error = "Invalid Email";
+                login_button.Enabled = false;
             }
+        }
+
+        private void alertOKButton(object sender, DialogClickEventArgs e)
+        {
+            login_username.Text = "";
+            login_passowrd.Text = "";
         }
 
         private void login()
@@ -68,7 +75,11 @@ namespace App7
                 }
                 else
                 {
-                    System.Console.WriteLine("Wrong username and password");
+                    alert.SetTitle("Error!");
+                    alert.SetMessage("Wrong Username or Password...");
+                    alert.SetPositiveButton("Ok", alertOKButton);
+                    Android.App.AlertDialog myDialog = alert.Create();
+                    myDialog.Show();
                 }
             }
             else
@@ -89,7 +100,11 @@ namespace App7
                 }
                 else
                 {
-                    System.Console.WriteLine("Wrong username and password");
+                    alert.SetTitle("Error!");
+                    alert.SetMessage("Wrong Username or Password...");
+                    alert.SetPositiveButton("Ok", alertOKButton);
+                    Android.App.AlertDialog myDialog = alert.Create();
+                    myDialog.Show();
                 }
             }
         }

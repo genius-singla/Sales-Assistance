@@ -15,14 +15,14 @@ namespace App7
     class UserObject_Order
     {
         public String name;
-        public String pr;
-        public int qt;
+        public int pr;
+        public int or_id;
 
-        public UserObject_Order(string product_name, string price, int qty)
+        public UserObject_Order(string product_name, int price, int id)
         {
             name = product_name;
             pr = price;
-            qt = qty;
+            or_id = id;
         }
     }
 }

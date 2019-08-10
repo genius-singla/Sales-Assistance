@@ -54,11 +54,11 @@ android:textColor="#FD9927"
 			
 			android:backgroundTint="@color/abc_primary_text_material_light"
     />
-	<DatePicker
+	<EditText
 		android:layout_height="100dp"
 		android:layout_width="300dp"
 			android:layout_weight="1.4"
-			android:id="@+id/datepick_order"
+			android:id="@+id/date_order"
 			android:layout_gravity="right"
 		/>
 		
@@ -117,8 +117,19 @@ android:textColor="#FD9927"
 
     <ListView
         android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_height="200dp"
         android:id="@+id/order_listView1"
     />
+
 	</LinearLayout>
+	<Button
+    android:layout_marginTop="20dp"
+    android:id="@+id/order_btn"
+    android:layout_width="300dp"
+    android:layout_height="50dp"
+		android:gravity="center"
+    android:background="#FD9927"
+    android:textColor="#ffffff"
+    android:textStyle="bold"
+    android:text="Place Order"/>
 </LinearLayout>

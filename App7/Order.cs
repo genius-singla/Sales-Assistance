@@ -5,6 +5,7 @@ using System.Text;
 
 using Android.App;
 using Android.Content;
+using Android.Database;
 using Android.OS;
 using Android.Runtime;
 using Android.Views;
@@ -15,45 +16,107 @@ namespace App7
     [Activity(Label = "Order", Theme = "@style/AppTheme.NoActionBar")]
     public class Order : Activity
     {
+        DBHelper myDB;
+        ICursor ic;
+        int cust_id;
+        int cat = 0;
+        int or_id;
+        int ind;
+        int total_amt = 0;
+        string add_product;
+        int add_id;
+        int add_price;
         Order_CustomAdapter searchAdapter;
         Android.Widget.SearchView sv;
+        Android.App.AlertDialog.Builder alert;
+        EditText date;
+        Spinner spinner_order1;
+        Spinner spinner_order2;
+        ListView listView1;
+        Button order_button;
+        EditText et;
+        ImageView logo_or;
+        List<string> customer = new List<string>();
 
-        //string[] myArray;
-        DatePicker date;
-        Spinner spinner_purchase1;
-        Spinner spinner_purchase2;
-        ListView listView;
-        ImageView logo_pur;
-        string[] customer = { "Aujla", "Parveer", "Suman" };
-        string[] myUnit1 = { "Kg", "lb" };
+        Dictionary<string, int> customer_dict = new Dictionary<string, int>();
+
+        List<string> myUnit1 = new List<string>();
+        Dictionary<string, int> category_dict = new Dictionary<string, int>();
         Order_CustomAdapter myCAdapter;
 
         List<UserObject_Order> myUsersList = new List<UserObject_Order>();
+        List<UserObject_Order> myPurchaseList = new List<UserObject_Order>();
+        
+        
+
+        //string[] myArray;
+       
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
             SetContentView(Resource.Layout.order_activity);
-            spinner_purchase1 = FindViewById<Spinner>(Resource.Id.spinner_order);
-            spinner_purchase2 = FindViewById<Spinner>(Resource.Id.spinner_order2);
-            logo_pur = FindViewById<ImageView>(Resource.Id.image_logo_pur);
-            listView = FindViewById<ListView>(Resource.Id.order_listView1);
-            date = FindViewById<DatePicker>(Resource.Id.datepick_order);
-            spinner_purchase1.Adapter = new ArrayAdapter
+            spinner_order1 = FindViewById<Spinner>(Resource.Id.spinner_order);
+            spinner_order2 = FindViewById<Spinner>(Resource.Id.spinner_order2);
+            logo_or = FindViewById<ImageView>(Resource.Id.image_logo_pur);
+            listView1 = FindViewById<ListView>(Resource.Id.order_listView1);
+            date = FindViewById<EditText>(Resource.Id.date_order);
+            order_button = FindViewById<Button>(Resource.Id.order_btn);
+            //sv = FindViewById<SearchView>(Resource.Id.searchID_order);
+            alert = new Android.App.AlertDialog.Builder(this);
+            myDB = new DBHelper(this);
+
+            ic = myDB.OrderID();
+            ic.MoveToFirst();
+
+            or_id = ic.GetInt(ic.GetColumnIndexOrThrow("max_id")) + 1;
+
+
+            ic = myDB.customer_list();
+
+            int j = 1;
+            while (ic.MoveToNext())
+            {
+                var a = ic.GetString(ic.GetColumnIndex("c_company_name"));
+                var b = ic.GetInt(ic.GetColumnIndex("customer_id"));
+                customer_dict.Add(a, b);
+                customer.Add(a);
+                j++;
+            }
+
+            ic = myDB.category_list();
+            myUnit1.Add("All Categories");
+            int k = 0;
+            while (ic.MoveToNext())
+            {
+                var a = ic.GetString(ic.GetColumnIndex("cat_name"));
+                var b = ic.GetInt(ic.GetColumnIndex("cat_id"));
+                myUnit1.Add(a);
+                category_dict.Add(a, b);
+                k++;
+            }
+
+            order_button.Click += delegate
+            {
+                myDB.insertOrder(or_id, cust_id, date.Text, total_amt);
+            };
+            listView1.ItemClick += listView1_ItemClick1;
+
+            date.Text = System.DateTime.Now.ToShortDateString();
+            //myDB = new DBHelper(this);
+            showProductList();
+
+            spinner_order1.Adapter = new ArrayAdapter
               (this, Android.Resource.Layout.SimpleListItem1, customer);
 
-            spinner_purchase1.ItemSelected += MyItemSelectedMethod2;
-            spinner_purchase2.Adapter = new ArrayAdapter
+            spinner_order1.ItemSelected += MyItemSelectedMethod2;
+
+            spinner_order2.Adapter = new ArrayAdapter
              (this, Android.Resource.Layout.SimpleListItem1, myUnit1);
 
+            spinner_order2.ItemSelected += MyItemSelectedMethod3;
 
-            spinner_purchase2.ItemSelected += MyItemSelectedMethod3;
-
-            //myAdapter = new ArrayAdapter(this, Android.Resource.Layout.SimpleListItem1, myUsersList);
-            myCAdapter = new Order_CustomAdapter(this, myUsersList);
-            listView.Adapter = myCAdapter;
-            listView.ItemClick += listView_ItemClick;
-            sv = FindViewById<Android.Widget.SearchView>(Resource.Id.searchID_order);
+            sv = FindViewById<SearchView>(Resource.Id.searchID_order);
             sv.QueryTextChange += Sv_QueryTextChange;
         }
 
@@ -64,13 +127,31 @@ namespace App7
             var value = customer[index];
             System.Console.WriteLine("value is " + value);
 
+            customer_dict.TryGetValue(value, out cust_id);
+            Console.WriteLine(cust_id);
 
-            if (value.ToLower().Equals("All Category"))
+        }
+
+    
+
+    public void showProductList()
+        {
+            ic = myDB.product_list();
+
+            int i = 0;
+            myUsersList = new List<UserObject_Order>();
+            while (ic.MoveToNext())
             {
-                //create a veg array and create as a new adater 
-
+                var a = ic.GetString(ic.GetColumnIndex("pro_name"));
+                var b = ic.GetInt(ic.GetColumnIndex("purchase_price"));
+                var c = ic.GetInt(ic.GetColumnIndex("pro_id"));
+                Console.WriteLine(a);
+                Console.WriteLine(b);
+                myUsersList.Add(new UserObject_Order(a, b, c));
+                i++;
             }
-
+            myCAdapter = new Order_CustomAdapter(this, myUsersList);
+            listView1.Adapter = myCAdapter;
         }
 
         private void MyItemSelectedMethod3(object sender, AdapterView.ItemSelectedEventArgs e)
@@ -78,16 +159,33 @@ namespace App7
             var index = e.Position;
 
             var value = myUnit1[index];
-            System.Console.WriteLine("value is " + value);
-
-
-            if (value.ToLower().Equals("Customer Name 1"))
+            if (value == "All Categories")
             {
-                //create a veg array and create as a new adater 
+                showProductList();
 
             }
+            else
+            {
+                category_dict.TryGetValue(value, out cat);
+                ic = myDB.product_list1(cat);
+                myUsersList = new List<UserObject_Order>();
+                int i = 0;
+                while (ic.MoveToNext())
+                {
+                    var a = ic.GetString(ic.GetColumnIndex("pro_name"));
+                    var b = ic.GetInt(ic.GetColumnIndex("purchase_price"));
+                    var c = ic.GetInt(ic.GetColumnIndex("pro_id"));
+                    Console.WriteLine(a);
+                    Console.WriteLine(b);
 
+                    myUsersList.Add(new UserObject_Order(a, b, c));
+                    i++;
+                }
+                myCAdapter = new Order_CustomAdapter(this, myUsersList);
+                listView1.Adapter = myCAdapter;
+            }
         }
+
 
         private void Sv_QueryTextChange(object sender, Android.Widget.SearchView.QueryTextChangeEventArgs e)
         {
@@ -102,20 +200,47 @@ namespace App7
                 myObj = myUsersList[i];
                 if (myObj.name.ToLower().Contains(mySearchValue))
                 {
-                    System.Console.WriteLine("You did it");
                     mylist.Add(myUsersList[i]);
                 }
             }
 
             searchAdapter = new Order_CustomAdapter(this, mylist);
-            listView.Adapter = searchAdapter;
+            listView1.Adapter = searchAdapter;
         }
-
-        private void listView_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
+        private void listView1_ItemClick1(object sender, AdapterView.ItemClickEventArgs e)
         {
             var index = e.Position;
+            ind = index;
             System.Console.WriteLine(myUsersList[index]);
+            UserObject_Order up;
+            up = myUsersList[index];
+            add_id = up.or_id;
+            add_price = up.pr;
+            et = new EditText(this);
+            alert.SetTitle("Insert");
+            alert.SetMessage("Please Insert the Quantity");
+            alert.SetView(et);
+            alert.SetPositiveButton("OK", alertOKButton);
 
+            alert.SetNegativeButton("Cancel", alertCancelButton);
+            //Dialog myDialog = alert.Create();
+            Android.App.AlertDialog myDialog = alert.Create();
+            myDialog.Show();
+        }
+
+        private void alertCancelButton(object sender, DialogClickEventArgs e)
+        {
+           
+        }
+
+        private void alertOKButton(object sender, DialogClickEventArgs e)
+        {
+            int a = Convert.ToInt32(et.Text);
+            if (a != null || a != 0)
+            {
+                myDB.insertOrderProduct(or_id, add_id, a);
+                total_amt = total_amt + (a * add_price);
+            }
         }
     }
 }

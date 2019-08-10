@@ -69,8 +69,9 @@ namespace App7
             };
             view_order.Click += delegate
             {
-                Intent newscreen = new Intent(this, typeof(View_order));
-
+                //Intent newscreen = new Intent(this, typeof(Changepassword));
+                Intent newscreen = new Intent(this, typeof(WelcomeScreen));
+                //newscreen.PutExtra("userName", "admin");
                 StartActivity(newscreen);
             };
 

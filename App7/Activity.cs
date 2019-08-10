@@ -28,6 +28,7 @@ namespace App7
         LinearLayout customer_layout;
         LinearLayout product_layout;
         LinearLayout purchase_layout;
+        LinearLayout fav_vendor;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -61,6 +62,13 @@ namespace App7
             customer_layout = FindViewById<LinearLayout>(Resource.Id.add_customer_link);
             product_layout = FindViewById<LinearLayout>(Resource.Id.pro_id_go);
             purchase_layout = FindViewById<LinearLayout>(Resource.Id.purchase_intent);
+            fav_vendor = FindViewById<LinearLayout>(Resource.Id.fav_vendor);
+
+            fav_vendor.Click += delegate
+            {
+                Intent newscreen = new Intent(this, typeof(Favourite));
+                StartActivity(newscreen);
+            };
 
             purchase_layout.Click += delegate
               {
@@ -77,8 +85,8 @@ namespace App7
             chg_pswd_layout.Click += delegate
             {
                 //Console.WriteLine("Welcome to Registration Page");
-                // Intent newscreen = new Intent(this, typeof(Changepassword));
-                Intent newscreen = new Intent(this, typeof(WelcomeScreen));
+                Intent newscreen = new Intent(this, typeof(Changepassword));
+                //Intent newscreen = new Intent(this, typeof(WelcomeScreen));
                 newscreen.PutExtra("userName", "admin");
                 StartActivity(newscreen);
             };

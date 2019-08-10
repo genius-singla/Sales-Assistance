@@ -37,10 +37,61 @@ namespace App7
 
         /*      ***Purchase Table***       */
         public static string purchase_tablename = "purchase";
+
+        // Favourite List
+        public ICursor favList()
+        {
+            String selectStm = "Select * from " + favourite_tablename + " where " + favourite_tablename + "."+ fav_vendor_id + " = "+vendor_tablename+"."+vendor_id;
+            ICursor myresult = connectionObj.RawQuery(selectStm, null);
+            return myresult;
+        }
+
         public static string purchase_id = "pur_id";
+
+        public ICursor pendingOrder()
+        {
+            String selectStm = "Select * from " + order_tablename + " where " + order_status + " = 'pending'";
+            ICursor myresult = connectionObj.RawQuery(selectStm, null);
+            return myresult;
+        }
+
+        public ICursor completeOrder()
+        {
+            String selectStm = "Select * from " + order_tablename + " where " + order_status + " = 'complete'";
+            ICursor myresult = connectionObj.RawQuery(selectStm, null);
+            return myresult;
+        }
+
         public static string ven_id = "vendor_id";
         public static string purchase_date = "pur_date";
         public static string purchase_amount = "pur_amt";
+
+
+        /*      ***Order Table***       */
+        public static string order_tablename = "order_table";
+        public static string order_id = "order_id";
+        public static string cust_id = "cust_id";
+        public static string order_date = "or_date";
+        public static string order_amount = "or_amt";
+        public static string order_status = "or_status";
+
+
+        //create order database
+        public string order_creatTable = "Create Table " + order_tablename + "(" + order_id + " int, "
+            + cust_id + " int, "
+            + order_date + " Text, "
+            + order_amount + " int, " 
+            +order_status + " Text);";
+
+        public void updateOrderStatus(int o_id)
+        {
+            String updateStm = "update " + order_tablename + " set " + order_status + " = 'complete' where " + order_id + " = " + o_id + ";";
+            connectionObj.ExecSQL(updateStm);
+            Console.WriteLine(updateStm);
+        }
+
+
+
         //create database
         public string purchase_creatTable = "Create Table " + purchase_tablename + "(" + purchase_id + " int, "
             + ven_id + " int, "
@@ -160,20 +211,86 @@ namespace App7
             Console.WriteLine(insertStatement);
         }
 
-        //      Inserting Purchase data
-        public void insertPurchase(int ven_id, string date, int total_amt)
+        //Getting Order Max Id
+        public ICursor OrderID()
+        {
+            String selectStm = "Select ifnull(max(" + order_id + "),0) as max_id from " + order_tablename;
+            ICursor myresult = connectionObj.RawQuery(selectStm, null);
+            return myresult;
+
+        }
+
+
+        //Getting Purchase Max Id
+        public ICursor PurchaseID()
         {
             String selectStm = "Select ifnull(max(" + purchase_id + "),0) as max_id from " + purchase_tablename;
             ICursor myresult = connectionObj.RawQuery(selectStm, null);
-            myresult.MoveToFirst();
-            var id = myresult.GetInt(myresult.GetColumnIndexOrThrow("max_id"));
+            return myresult;
 
-            string insertStatement = "Insert into " + purchase_tablename + " values(" + (id + 1) + ", " + ven_id + ", '"
+        }
+
+        //      Inserting Order data
+        public void insertOrder(int or_id, int cust_id, string date, int total_amt)
+        {
+            string insertStatement = "Insert into " + order_tablename + " values(" + or_id + ", " + cust_id + ", '"
+                + date + "', " + total_amt + ", 'pending');";
+            connectionObj.ExecSQL(insertStatement);
+            Console.WriteLine(insertStatement);
+
+        }
+
+        //      Inserting Purchase data
+        public void insertPurchase(int pur_id, int ven_id, string date, int total_amt)
+        {
+            string insertStatement = "Insert into " + purchase_tablename + " values(" + pur_id + ", " + ven_id + ", '"
                 + date + "', " + total_amt + ");";
             connectionObj.ExecSQL(insertStatement);
             Console.WriteLine(insertStatement);
 
         }
+        //Inserting Product order
+        public void insertOrderProduct(int or_id, int add_id, int qty)
+        {
+            string insertStatement = "Insert into " + order_product_tablename + " values(" + or_id + ", " + add_id + ", "
+                + qty + ");";
+            connectionObj.ExecSQL(insertStatement);
+            Console.WriteLine(insertStatement);
+        }
+
+        //Inserting Product purchase
+        public void insertPurchasedProduct(int pur_id, int add_id, int qty)
+        {
+            string insertStatement = "Insert into " + purchase_product_tablename + " values(" + pur_id + ", " + add_id + ", "
+                + qty + ");";
+            connectionObj.ExecSQL(insertStatement);
+            Console.WriteLine(insertStatement);
+        }
+
+        /*      Purchase Product        */
+        public static string purchase_product_tablename = "purchase_product";
+        public static string product_purchase_id = "pur_id";
+        public static string pro_id = "pro_id";
+        public static string pro_qty = "pro_qty";
+
+        //      Create Product Purchase Table
+        public string product_purchase_creatTable = "Create Table " + purchase_product_tablename + "("
+            + product_purchase_id + " int, "
+            + pro_id + " int, "
+            + pro_qty + " int);";
+
+
+        /*      Order Product        */
+        public static string order_product_tablename = "order_product";
+        public static string product_order_id = "or_id";
+        public static string o_pro_id = "pro_id";
+        public static string o_pro_qty = "pro_qty";
+
+        //      Create Product Order Table
+        public string product_order_creatTable = "Create Table " + order_product_tablename + "("
+            + product_order_id + " int, "
+            + o_pro_id + " int, "
+            + o_pro_qty + " int);";
 
 
         /*      ***Product Table***      */
@@ -281,7 +398,15 @@ namespace App7
         }
 
         //Getting Vendor list
-        internal ICursor vendor_list()
+        public ICursor customer_list()
+        {
+            String selectStm = "Select * from " + customer_tablename + ";";
+            ICursor myresut = connectionObj.RawQuery(selectStm, null);
+            return myresut;
+        }
+
+        //Getting Vendor list
+        public ICursor vendor_list()
         {
             String selectStm = "Select * from " + vendor_tablename + ";";
             ICursor myresut = connectionObj.RawQuery(selectStm, null);
@@ -367,6 +492,9 @@ namespace App7
             db.ExecSQL(purchase_creatTable);
             db.ExecSQL(customer_creatTable);
             db.ExecSQL(fav_creatTable);
+            db.ExecSQL(product_purchase_creatTable);
+            db.ExecSQL(order_creatTable);
+            db.ExecSQL(product_order_creatTable);
             //insertAdmin("admin","abc");
             string insertStm = "Insert into " + admin_tablename + " values('admin', 'abc');";
             Console.WriteLine(insertStm);

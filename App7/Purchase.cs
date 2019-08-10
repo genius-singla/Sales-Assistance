@@ -19,8 +19,12 @@ namespace App7
         ICursor ic;
         int ven_id;
         int cat = 0;
+        int pur_id;
         int ind;
         int total_amt = 0;
+        string add_product;
+        int add_id;
+        int add_price;
         Purchase_CustomAdapter searchAdapter;
         Android.Widget.SearchView sv;
         Android.App.AlertDialog.Builder alert;
@@ -40,6 +44,7 @@ namespace App7
         Purchase_CustomAdapter myCAdapter;
 
         List<UserObject_purchase> myUsersList = new List<UserObject_purchase>();
+        List<UserObject_purchase> myPurchaseList = new List<UserObject_purchase>();
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -53,6 +58,13 @@ namespace App7
             date = FindViewById<EditText>(Resource.Id.edt_txt_date);
             alert = new Android.App.AlertDialog.Builder(this);
             myDB = new DBHelper(this);
+
+            ic = myDB.PurchaseID();
+            ic.MoveToFirst();
+
+            pur_id = ic.GetInt(ic.GetColumnIndexOrThrow("max_id"))+1;
+
+
             ic = myDB.vendor_list();
             
             int j = 1;
@@ -79,7 +91,7 @@ namespace App7
 
             purchase_button.Click += delegate
             {
-                myDB.insertPurchase(ven_id, date.Text, total_amt);
+                myDB.insertPurchase(pur_id ,ven_id, date.Text, total_amt);
             };
             listView1.ItemClick += listView_ItemClick1;
 
@@ -111,9 +123,10 @@ namespace App7
             {
                 var a = ic.GetString(ic.GetColumnIndex("pro_name"));
                 var b = ic.GetInt(ic.GetColumnIndex("purchase_price"));
+                var c = ic.GetInt(ic.GetColumnIndex("pro_id"));
                 Console.WriteLine(a);
                 Console.WriteLine(b);
-                myUsersList.Add(new UserObject_purchase(a, b));
+                myUsersList.Add(new UserObject_purchase(a, b, c));
                 i++;
             }
             myCAdapter = new Purchase_CustomAdapter(this, myUsersList);
@@ -140,10 +153,11 @@ namespace App7
                 {
                     var a = ic.GetString(ic.GetColumnIndex("pro_name"));
                     var b = ic.GetInt(ic.GetColumnIndex("purchase_price"));
+                    var c = ic.GetInt(ic.GetColumnIndex("pro_id"));
                     Console.WriteLine(a);
                     Console.WriteLine(b);
                     
-                    myUsersList.Add(new UserObject_purchase(a, b));
+                    myUsersList.Add(new UserObject_purchase(a, b, c));
                     i++;
                 }
                 myCAdapter = new Purchase_CustomAdapter(this, myUsersList);
@@ -155,10 +169,11 @@ namespace App7
         {
             var index = e.Position;
 
-            var value = myUnit1[index];
+            var value = vendor[index];
             System.Console.WriteLine("value is " + value);
             
             vendor_dict.TryGetValue(value, out ven_id);
+            Console.WriteLine(ven_id);
            
         }
 
@@ -188,6 +203,10 @@ namespace App7
             var index = e.Position;
             ind = index;
             System.Console.WriteLine(myUsersList[index]);
+            UserObject_purchase up;
+            up = myUsersList[index];
+            add_id = up.p_id;
+            add_price = up.pr;
             et = new EditText(this);
             alert.SetTitle("Insert");
             alert.SetMessage("Please Insert the Quantity");
@@ -207,7 +226,13 @@ namespace App7
 
         private void alertOKButton(object sender, DialogClickEventArgs e)
         {
-            var a = et.Text;
+            int a = Convert.ToInt32(et.Text);
+            if(a!=null || a!=0)
+            {
+                myDB.insertPurchasedProduct(pur_id, add_id, a);
+                total_amt = total_amt + (a*add_price);
+            }
+            
         }
     }
     
